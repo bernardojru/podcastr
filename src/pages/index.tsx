@@ -9,6 +9,7 @@ import ptBR from "date-fns/locale/pt-BR";
 import Link from "next/link";
 import { usePlayer } from "../contexts/PlayerContext";
 
+
 interface Episodes {
   id: string;
   title: string;
@@ -30,6 +31,10 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
 
+  const currentDate = format(new Date(), "EEEEEE, d MMMM", {
+    locale: ptBR,
+  });
+
   return (
     <>
       <Head>
@@ -37,7 +42,10 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
       </Head>
       <div className="overflow-y-scroll h-calc">
         <section className="m-8">
-          <h2 className="mt-4 mb-6 text-2xl">Últimos lançamentos</h2>
+          <div className="flex items-center gap-96">
+            <h2 className="mt-4 mb-6 text-2xl">Últimos lançamentos</h2>
+            <span className="capitalize">{currentDate}</span>
+          </div>
 
           <ul className="grid grid-cols-2 gap-6">
             {latestEpisodes.map((latestEpisode, index) => (
