@@ -11,16 +11,13 @@ export default function Document() {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap"
           rel="stylesheet"
         />
 
         <link rel="shortcut icon" href="favicon.png" type="image/png" />
       </Head>
-      <body
-        className="bg-gray-50 font-sans text-gray-500 font-medium 
-      "
-      >
+      <body>
         <Main />
         <NextScript />
       </body>

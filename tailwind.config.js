@@ -4,14 +4,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: "Nunito, sans-serif",
+        sans: "Inter, sans-serif",
       },
       height: {
-        calc: 'calc(100vh - 6.5rem)',
+        calc: "calc(100vh - 6rem)",
       },
       backgroundImage: {
         gradient:
           "linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(0, 0, 0, 0) 100%)",
+        gradientButton:
+          "linear-gradient(90deg, rgb(73, 83, 184) 0%, rgba(73, 83, 184, 0.2) 100%);",
       },
       colors: {
         gray: {
@@ -20,6 +22,9 @@ module.exports = {
           200: "#AFB2B1",
           500: " #808080",
           800: "#494D4B",
+          850: "#191622",
+          900: "#44475A",
+          950: 'rgb(178, 185, 255);'
         },
         green: {
           500: " #04D361",
