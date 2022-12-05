@@ -23,7 +23,7 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
       setThemes("dark");
     }
   }
-  
+
   return (
     <ThemeContext.Provider value={{ themes, toggleThemes }}>
       {children}

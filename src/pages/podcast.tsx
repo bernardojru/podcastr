@@ -9,6 +9,10 @@ import ptBR from "date-fns/locale/pt-BR";
 import Link from "next/link";
 import { usePlayer } from "../contexts/PlayerContext";
 import { useThemes } from "../contexts/ThemeContext";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { MagnifyingGlass } from "phosphor-react";
 
 interface Episodes {
   id: string;
@@ -27,6 +31,7 @@ interface PodcastProps {
 }
 
 export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
+  const { data: session } = useSession();
   const { playList } = usePlayer();
   const { themes } = useThemes();
 
@@ -36,69 +41,76 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
     locale: ptBR,
   });
 
-  return (
-    <>
-      <Head>
-        <title>Podcast | Podcastr</title>
-      </Head>
-      <div
-        className={`overflow-y-scroll h-calc ${
-          themes === "dark"
-            ? "bg-gray-850 text-gray-300"
-            : "bg-gray-50 text-gray-850"
-        }`}
-      >
-        <section className="m-8">
-          <div className="flex items-center gap-96">
-            <h2 className="mt-4 mb-6 text-2xl w-full">Últimos lançamentos</h2>
-            {/* <span className="capitalize">{currentDate}</span> */}
-            <form>
-              <input type="text" placeholder="pesquisar" />
-              <button>pesquisar</button>
-            </form>
-          </div>
+  if (session) {
+    return (
+      <>
+        <Head>
+          <title>Podcast | Podcastr</title>
+        </Head>
+        <div
+          className={`overflow-y-scroll h-calc ${
+            themes === "dark"
+              ? "bg-gray-850 text-gray-300"
+              : "bg-gray-50 text-gray-850"
+          }`}
+        >
+          <section className="m-8">
+            <div className="flex items-center justify-between">
+              <h2 className="mt-4 mb-6 text-2xl">Últimos lançamentos</h2>
 
-          <ul className="grid grid-cols-2 gap-6">
-            {latestEpisodes.map((latestEpisode, index) => (
-              <li
-                key={latestEpisode.id}
-                className={`${
-                  themes === "dark"
-                    ? "bg-gray-900 text-gray-300 border-0"
-                    : "bg-white text-gray-850 border"
-                } border-gray-100  p-5 rounded-3xl relative flex items-center`}
-              >
-                <Image
-                  width={192}
-                  height={192}
-                  src={latestEpisode.thumbnail}
-                  alt={latestEpisode.title}
-                  className="w-24 h-24 rounded-2xl object-cover"
+              <form className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder="pesquisar"
+                  className="p-2 bg-gray-900 rounded-md outline-none"
                 />
+                <button className="bg-gray-900 p-2 rounded-md">
+                  <MagnifyingGlass size={20} />
+                </button>
+              </form>
+            </div>
 
-                <div className="flex-1 ml-4 w-72">
-                  <Link
-                    href={`/episodes/${latestEpisode.id}`}
-                    className="block font-sans font-semibold leading-6 hover:underline"
-                  >
-                    {latestEpisode.title}
-                  </Link>
-                  <p
-                    className="
+            <ul className="grid grid-cols-2 gap-6">
+              {latestEpisodes.map((latestEpisode, index) => (
+                <li
+                  key={latestEpisode.id}
+                  className={`${
+                    themes === "dark"
+                      ? "bg-gray-900 text-gray-300 border-0"
+                      : "bg-white text-gray-850 border"
+                  } border-gray-100  p-5 rounded-3xl relative flex items-center`}
+                >
+                  <Image
+                    width={192}
+                    height={192}
+                    src={latestEpisode.thumbnail}
+                    alt={latestEpisode.title}
+                    className="w-24 h-24 rounded-2xl object-cover"
+                  />
+
+                  <div className="flex-1 ml-4 w-72">
+                    <Link
+                      href={`/episodes/${latestEpisode.id}`}
+                      className="block font-sans font-semibold leading-6 hover:underline"
+                    >
+                      {latestEpisode.title}
+                    </Link>
+                    <p
+                      className="
                   text-sm mt-2 max-w-[70%] whitespace-nowrap
                   overflow-hidden text-ellipsis
                   "
-                  >
-                    {latestEpisode.members}
-                  </p>
-                  <span>{latestEpisode.publishedAt},</span>
-                  <span> {latestEpisode.durationAsString}</span>
-                </div>
+                    >
+                      {latestEpisode.members}
+                    </p>
+                    <span>{latestEpisode.publishedAt},</span>
+                    <span> {latestEpisode.durationAsString}</span>
+                  </div>
 
-                <button
-                  onClick={() => playList(episodeList, index)}
-                  type="button"
-                  className={`
+                  <button
+                    onClick={() => playList(episodeList, index)}
+                    type="button"
+                    className={`
                 absolute right-8 bottom-8 w-10 h-10 ${
                   themes === "dark"
                     ? "bg-gray-850 border-0"
@@ -106,94 +118,99 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                 }  rounded-md
                 flex items-center justify-center transition-colors 
               `}
-                >
-                  <img src="/play-green.svg" alt="" className="w-6 h-6" />
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="m-8">
-          <h2 className="text-xl">Todos episódios</h2>
-
-          <table cellSpacing={0} className="w-full mt-5">
-            <thead>
-              <tr
-                className={`${
-                  themes === "dark"
-                    ? "border-b border-gray-600"
-                    : "border-b border-gray-100"
-                }`}
-              >
-                <th className="uppercase font-medium text-left"></th>
-                <th className="uppercase font-medium text-left">PODCAST</th>
-                <th className="uppercase font-medium text-left">INTEGRANTES</th>
-                <th className="uppercase font-medium text-left">DATA</th>
-                <th className="uppercase font-medium text-left">DURAÇÃO</th>
-                <th className="uppercase font-medium text-left"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {allEpisodes.map((episode, index) => (
-                <>
-                  <div className="mb-3" />
-                  <tr
-                    key={episode.id}
-                    className={`${
-                      themes === "dark"
-                        ? "border-b border-gray-600"
-                        : "border-b border-gray-100"
-                    } p-8`}
                   >
-                    <td className="text-sm ">
-                      <Image
-                        className="w-10 h-10 rounded-lg object-cover"
-                        width={120}
-                        height={120}
-                        src={episode.thumbnail}
-                        alt={episode.title}
-                      />
-                    </td>
-                    <td className="text-sm w-80">
-                      <Link
-                        href={`/episodes/${episode.id}`}
-                        className=" font-semibold leading-6 text-base hover:underline"
-                      >
-                        {episode.title}
-                      </Link>
-                    </td>
-                    <td className="text-sm  w-44">{episode.members}</td>
-                    <td className="text-sm ">{episode.publishedAt}</td>
-                    <td className="text-sm">{episode.durationAsString}</td>
-                    <td className="text-sm">
-                      <button
-                        onClick={() =>
-                          playList(episodeList, index + latestEpisodes.length)
-                        }
-                        type="button"
-                        className={`${
-                          themes === "dark"
-                            ? "bg-gray-600"
-                            : "bg-white border border-gray-100 hover:bg-gray-50 "
-                        } w-8 h-8  rounded-lg flex items-center justify-center  transition-colors `}
-                      >
-                        <img
-                          src="/play-green.svg"
-                          alt="Tocar episódio"
-                          className="w-5 h-5"
-                        />
-                      </button>
-                    </td>
-                  </tr>
-                </>
+                    <img src="/play-green.svg" alt="" className="w-6 h-6" />
+                  </button>
+                </li>
               ))}
-            </tbody>
-          </table>
-        </section>
-      </div>
-    </>
-  );
+            </ul>
+          </section>
+
+          <section className="m-8">
+            <h2 className="text-xl">Todos episódios</h2>
+
+            <table cellSpacing={0} className="w-full mt-5">
+              <thead>
+                <tr
+                  className={`${
+                    themes === "dark"
+                      ? "border-b border-gray-600"
+                      : "border-b border-gray-100"
+                  }`}
+                >
+                  <th className="uppercase font-medium text-left"></th>
+                  <th className="uppercase font-medium text-left">PODCAST</th>
+                  <th className="uppercase font-medium text-left">
+                    INTEGRANTES
+                  </th>
+                  <th className="uppercase font-medium text-left">DATA</th>
+                  <th className="uppercase font-medium text-left">DURAÇÃO</th>
+                  <th className="uppercase font-medium text-left"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {allEpisodes.map((episode, index) => (
+                  <>
+                    <div className="mb-3" />
+                    <tr
+                      key={episode.id}
+                      className={`${
+                        themes === "dark"
+                          ? "border-b border-gray-600"
+                          : "border-b border-gray-100"
+                      } p-8`}
+                    >
+                      <td className="text-sm ">
+                        <Image
+                          className="w-10 h-10 rounded-lg object-cover"
+                          width={120}
+                          height={120}
+                          src={episode.thumbnail}
+                          alt={episode.title}
+                        />
+                      </td>
+                      <td className="text-sm w-80">
+                        <Link
+                          href={`/episodes/${episode.id}`}
+                          className=" font-semibold leading-6 text-base hover:underline"
+                        >
+                          {episode.title}
+                        </Link>
+                      </td>
+                      <td className="text-sm  w-44">{episode.members}</td>
+                      <td className="text-sm ">{episode.publishedAt}</td>
+                      <td className="text-sm">{episode.durationAsString}</td>
+                      <td className="text-sm">
+                        <button
+                          onClick={() =>
+                            playList(episodeList, index + latestEpisodes.length)
+                          }
+                          type="button"
+                          className={`${
+                            themes === "dark"
+                              ? "bg-gray-600"
+                              : "bg-white border border-gray-100 hover:bg-gray-50 "
+                          } w-8 h-8  rounded-lg flex items-center justify-center  transition-colors `}
+                        >
+                          <img
+                            src="/play-green.svg"
+                            alt="Tocar episódio"
+                            className="w-5 h-5"
+                          />
+                        </button>
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 export const getStaticProps: GetStaticProps = async () => {

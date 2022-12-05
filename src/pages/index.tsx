@@ -1,5 +1,7 @@
 import Head from "next/head";
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
+
+import { GetServerSideProps } from "next";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -21,8 +23,8 @@ export default function Home() {
           Faça login com seu Google para começar
         </p>
         <button
-          className="bg-gradientButton h-14 px-10 rounded-md"
-          onClick={() => signIn()}
+          className="bg-gradientButton h-14 px-10 rounded-full"
+          onClick={() => signIn("google")}
         >
           Entrar com Google
         </button>
@@ -30,3 +32,21 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/podcast",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      session,
+    },
+  };
+};

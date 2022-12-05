@@ -5,7 +5,6 @@ import { Moon, Sun } from "phosphor-react";
 import { useThemes } from "../contexts/ThemeContext";
 
 import { useSession, signOut } from "next-auth/react";
-import Image from "next/image";
 
 export function Header() {
   const { data: session } = useSession();
@@ -40,7 +39,13 @@ export function Header() {
               onClick={openExitButton}
               className=" h-12 px-2  flex items-center gap-4 bg-gray-850 rounded-full"
             >
-              <Image className="w-8 h-8 rounded-full" src="" alt="perfil" />
+              {session.user?.image && (
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src={session.user.image}
+                  alt="perfil"
+                />
+              )}
               <p className="text-gray-100">{session?.user?.name}</p>
             </button>
 
