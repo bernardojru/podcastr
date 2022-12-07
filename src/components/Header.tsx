@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { Moon, Sun } from "phosphor-react";
-import { useThemes } from "../contexts/ThemeContext";
+import { useThemes } from "../hooks/useThemes";
 
 import { useSession, signOut } from "next-auth/react";
 
@@ -15,6 +14,7 @@ export function Header() {
   function openExitButton() {
     setIsOpen(!isOpen);
   }
+  // console.log(session?.user?.image)
 
   if (session) {
     return (
@@ -43,7 +43,7 @@ export function Header() {
                 <img
                   className="w-8 h-8 rounded-full"
                   src={session.user.image}
-                  alt="perfil"
+                  alt="foto de perfil"
                 />
               )}
               <p className="text-gray-100">{session?.user?.name}</p>
@@ -60,15 +60,11 @@ export function Header() {
             </div>
           </div>
 
-          <div className="bg-gray-850 rounded-md p-2">
-            <button className="flex items-center" onClick={toggleThemes}>
-              {themes === "dark" ? (
-                <Sun size={20} color="#fff" />
-              ) : (
-                <Moon size={20} color="#fff" />
-              )}
-            </button>
-          </div>
+          <Link href='/podcast'>
+          adicionar 
+          </Link>
+
+          
         </div>
       </header>
     );

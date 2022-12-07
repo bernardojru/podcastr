@@ -80,7 +80,7 @@ export function PlayerButtons({ episode }: PlayerButtons) {
             <Slider
               max={episode.duration}
               value={progress}
-              onChange={handleSeek}
+              onChange={() => handleSeek}
               trackStyle={{ backgroundColor: " #04D361" }}
               railStyle={{ backgroundColor: " #9f75ff" }}
               handleStyle={{ borderColor: " #04D361", borderWidth: 4 }}

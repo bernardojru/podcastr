@@ -1,34 +1,44 @@
-import Head from "next/head";
-import { getSession, signIn, useSession } from "next-auth/react";
+import { HomeContainer, Button } from "../styles/pages/home";
 
+import Head from "next/head";
 import { GetServerSideProps } from "next";
+import { getSession, signIn, useSession } from "next-auth/react";
+import { ToggleThemesButton } from "../components/ToggleThemesButton";
+import Link from "next/link";
 
 export default function Home() {
-  const { data: session } = useSession();
   return (
     <>
       <Head>
         <title>Home | Podcastr</title>
       </Head>
-      <div
-        className={`${
-          session ? "h-calc" : "h-screen"
-        } flex flex-col items-center justify-center bg-purple-500 text-white text-center`}
-      >
-        <img src="/playing.svg" alt="Tocando agora" className="h-32 w-32" />
-        <h1 className=" border-gray-100 text-4xl">
-          O melhor para você ouvir, sempre
-        </h1>
-        <p className="flex items-center  gap-4">
-          Faça login com seu Google para começar
-        </p>
-        <button
-          className="bg-gradientButton h-14 px-10 rounded-full"
-          onClick={() => signIn("google")}
-        >
-          Entrar com Google
-        </button>
-      </div>
+      <HomeContainer>
+        <header>
+          <img src="/simple-logo.svg" alt="" />
+
+          <nav>
+            <Link href='/podcast'>
+              <button>Entrar</button>
+            </Link>
+            <ToggleThemesButton />
+          </nav>
+        </header>
+
+        <section>
+          <span>Podcast Application</span>
+          <h1>Podcastr</h1>
+          <p>
+            Uma plataforma construída para transmissão de podcasts sobre a area
+            de desenvolvimento de softwares.
+          </p>
+
+          <Button onClick={() => signIn("google")}>Entrar com Google</Button>
+        </section>
+
+        <section>
+          <img src="/template.png" alt="" />
+        </section>
+      </HomeContainer>
     </>
   );
 }

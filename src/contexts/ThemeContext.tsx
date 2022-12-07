@@ -30,7 +30,3 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
     </ThemeContext.Provider>
   );
 }
-
-export const useThemes = () => {
-  return useContext(ThemeContext);
-};

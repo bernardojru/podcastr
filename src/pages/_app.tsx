@@ -1,6 +1,8 @@
-import "../styles/globals.css";
+import {globalStyles} from '../styles/global'
 
 import type { AppProps } from "next/app";
+
+// import '../styles/globals.css'
 
 import { Header } from "../components/Header";
 import { Player } from "../components/Player";
@@ -8,6 +10,8 @@ import { PlayerContextProvider } from "../contexts/PlayerContext";
 import { ThemeContextProvider } from "../contexts/ThemeContext";
 
 import { SessionProvider } from "next-auth/react";
+
+globalStyles()
 
 export default function App({
   Component,
