@@ -1,17 +1,13 @@
-import {globalStyles} from '../styles/global'
-
+import { globalStyles } from "../styles/global";
+import { Container } from "../styles/pages/app";
 import type { AppProps } from "next/app";
-
-// import '../styles/globals.css'
-
-import { Header } from "../components/Header";
 import { Player } from "../components/Player";
 import { PlayerContextProvider } from "../contexts/PlayerContext";
 import { ThemeContextProvider } from "../contexts/ThemeContext";
 
 import { SessionProvider } from "next-auth/react";
 
-globalStyles()
+globalStyles();
 
 export default function App({
   Component,
@@ -21,15 +17,15 @@ export default function App({
     <SessionProvider session={session}>
       <ThemeContextProvider>
         <PlayerContextProvider>
-          <div className="flex">
-            <main className="flex-1">
-              <Header />
+          <Container>
+            <main>
               <Component {...pageProps} />
             </main>
             <Player />
-          </div>
+          </Container>
         </PlayerContextProvider>
       </ThemeContextProvider>
     </SessionProvider>
   );
 }
+// acessar o : https://stitches.dev/docs/variants

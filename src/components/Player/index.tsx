@@ -1,49 +1,50 @@
+import { PlayerContainer, ShowButton, PlayerInfo, PlayerEmpty } from "./styles";
 import Image from "next/image";
 import { usePlayer } from "../../contexts/PlayerContext";
 import { PlayerButtons } from "./PlayerButtons";
 
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 export function Player() {
+  const [show, setShow] = useState(true);
+
+  function handleShowPlayer() {
+    setShow((state) => !state);
+  }
   const { data: session } = useSession();
   const { episodeList, currentEpisodeIndex } = usePlayer();
 
   const episode = episodeList[currentEpisodeIndex];
 
-  if (session) {
-    return (
-      <div className="py-12 px-16 w-96 h-screen sticky top-0 bg-purple-500 text-white flex flex-col items-center justify-between">
-        <header className="flex items-center gap-4">
-          <img src="/playing.svg" alt="Tocando agora" />
-          <strong className="font-semibold">Tocando agora</strong>
-        </header>
+  return (
+    <PlayerContainer
+      style={{transform: `translateX(${show ? '100%' : '0%'})`}}
+    >
+      <ShowButton onClick={handleShowPlayer} />
+      <header>
+        <img src="/playing.svg" alt="Tocando agora" />
+        <strong>Tocando agora</strong>
+      </header>
 
-        {episode ? (
-          <div className="text-center">
-            <Image
-              className="rounded-3xl"
-              width={592}
-              height={592}
-              src={episode.thumbnail}
-              alt={episode.title}
-            />
-            <strong className="block mt-8 text-xl font-semibold leading-7">
-              {episode.title}
-            </strong>
-            <span className="block mt-4 opacity-60 leading-6">
-              {episode.members}
-            </span>
-          </div>
-        ) : (
-          <div className="w-full h-80 border border-dashed border-purple-300 rounded-3xl bg-gradient p-16 text-center flex items-center justify-center">
-            <strong>Selecione um podcast para ouvir</strong>
-          </div>
-        )}
+      {episode ? (
+        <PlayerInfo>
+          <Image
+            width={592}
+            height={592}
+            src={episode.thumbnail}
+            alt={episode.title}
+          />
+          <strong>{episode.title}</strong>
+          <span>{episode.members}</span>
+        </PlayerInfo>
+      ) : (
+        <PlayerEmpty>
+          <strong>Selecione um podcast para ouvir</strong>
+        </PlayerEmpty>
+      )}
 
-        <PlayerButtons episode={episode} />
-      </div>
-    );
-  } else {
-    return <></>;
-  }
+      <PlayerButtons episode={episode} />
+    </PlayerContainer>
+  );
 }

@@ -1,6 +1,10 @@
 ## Ideia: criar um podcast que fornece experiencia de alguns programadores
 
-*Com o Login o usuário pode fazer pesquisas sem o login não é permitido fazer pesquisas!*
+## localhost:3000
+
+## TROCAR DE POSIÇÃO AS IMAGENS, E COLOCAR AS TECNOLOGIAS NA PÁGINA ACIMA. E NA PAGINA DAS TECNOLOGIAS COLOCAR A LÓGICA DO PROJECTO
+
+_Com o Login o usuário pode fazer pesquisas sem o login não é permitido fazer pesquisas!_
 
 ## TECNOLOGIAS:
 
@@ -18,25 +22,29 @@
 **electron**
 **pwa github: https://github.com/shadowwalker/next-pwa**
 
+## Resumo: O resumo de TCC ou abstract (termo em inglês) é uma parte fundamental do trabalho e nela deve estar, de maneira resumida, as informações gerais sobre o trabalho. O resumo aparece logo no início do trabalho, após o título. O resumo de TCC segue as normas da ABNT (NBR 6028) e pode variar um pouco, dependendo do trabalho acadêmico.
+
+**resumo: .**
+
 ## Introdução da app
 
-**Como desenvolvedor de softwares nosso é sempre achar algumas soluções para resolver problemas, e cada problema tem uma forma especifica de ser resolvido é aí que entram as famosas linguagens de programação, frameworks, bibliotecas entre outros. Que na maioria somos obrigados a aprender a usadas de modo eficaz lendo a própria documentação feito pela própria empresa para nos ensinar como usar a linguagem e essa documentação vem sempre escrita em ingles impedindo de aprender quem não conhece a lingua** // não acabei
+**Como desenvolvedor de softwares nosso trabalho consiste sempre em achar algumas soluções para resolver problemas, e cada problema tem uma forma especifica de ser resolvido, é aí que entram as famosas linguagens de programação, frameworks, bibliotecas entre outros. Que na maioria das vezes temos que aprender a usá-las de modo eficaz, lendo a própria documentação feita pela própria empresa para nos ensinar como usar a linguagem, e essa documentação vem sempre escrita em ingles impedindo quem não conhece a lingua de aprender mais sobre o assunto.** // não acabei
 
-**A proposta do projeto é criar um site que contenha podcasts com foco em desenvolvimento de softwares seja falando da carreira com também das tecnologias(ou seja conversas ou debates sobre um determinado tema) feito por pessoas que respiram a tecnologia e já têm um vasto conhecimento e experiecia na area abordando os seguintes tópicos Microsserviços, Banco de Dados, Autenticação e muito mais. O foco é lucidar as pessoas sobre esse grande universo da programação em vários ângulos**
+**A proposta do projeto é criar um Aplicativo Desktop que contenha podcasts com foco em desenvolvimento de softwares seja falando da carreira como também das tecnologias(ou seja conversas ou debates sobre um determinado tema) feito por pessoas que respiram a tecnologia e já têm um vasto conhecimento e experiência na area abordando os seguintes tópicos Microsserviços, Banco de Dados, Autenticação e muito mais. O foco é lucidar as pessoas sobre esse grande universo da programação em vários ângulos**
 
-## Problema
+## Problema é uma pergunta
 
-**Estamos cada vez mais ligados a internet, isto é, por meio de alguns dispositivos, seja aprendendo ou ensinando, que normalmente são feitas em algumas plataformas que necessitam de um Desenvolvedor para criar e atualizar constantemente e esses mesmos precisam de estar em constante aprendizado que muitas vezes devem ser rápidos visto a urgencia da empresa em ter uma solução. Me baseando em alguns metodos de ensino um curso levaria mais tempo a ser feito do que uma plataforma que já disponibiliza interações de pessoas com diversos conhecimento da area Com isso surgiu a seguinte pergunta: -Como Desenvolvedores de softwares vão evoluir sobre a mentalidade e as capacidades tecnicas**
+**Estamos cada vez mais ligados a internet, isto é, por meio de alguns dispositivos, seja aprendendo ou ensinando, que normalmente são feitas em algumas plataformas que necessitam de um Desenvolvedor para criar e atualizar constantemente, e esses mesmos precisam de estar em constante aprendizado que muitas vezes devem ser rápidos visto a urgência da empresa em ter uma solução. Me baseando em alguns métodos de ensino, um curso levaria mais tempo a ser feito do que uma plataforma que já disponibiliza interações de pessoas com diversos conhecimento da área, falando tanto do mercado como de cada tecnologia utilizada. Com isso surgiu a seguinte pergunta: -Como Desenvolvedores de softwares vão evoluir sobre a mentalidade e as capacidades técnicas**
 
 ## HIPÓTESE
 
-**Tendo em conta que todo o problema deve ter uma solução e as soluções devem sempre facilitar o usuário além de trazer uma inovação, e uma das melhores formas de aprender algum conteúdo pode ser pelo ouvir, por isso viu-se a necessidade de se criar um Aplicativo Desktop que contenha podcasts de profissionais na area interagindo sobre alguns tópicos sobre Desenvolvimento de softwares seja a parte prática ou a parte de mercado sendo um aplicativo totalmente offline, ou seja, pode ser usado sem uma internet além de ser grátis e fácil de usar**
+**Tendo em conta que todo o problema deve ter uma solução e as soluções devem sempre facilitar o usuário além de trazer uma inovação, e uma das melhores formas de aprender algum conteúdo pode ser pelo ouvir, por isso viu-se a necessidade de se criar um Aplicativo Desktop que contenha podcasts de profissionais na área interagindo sobre alguns tópicos sobre Desenvolvimento de softwares seja a parte prática ou o sobre o mercado, sendo um aplicativo totalmente flexível a todos os níveis, podendo ser utilizado de modo online e offline, ou seja, pode ser usado com ou sem uma internet além de ser grátis e fácil de usar**
 
 ## Você pode pensar a justificativa como a maneira pela qual você vai explicar para alguém sobre a importância do seu trabalho.
 
 ## JUSTIFICATIVA
 
-**A ideia da plataforma surgiu no momento em que me senti motivado em adquirir mais conhecimento que ocasionaria em ler mais vezes as documentações ou comprar cursos. Sobre os cursos muita das vezes levam algum tempo a serem feitos visto que precisa ser bem elaborado e muito atraente para o publico. As documentações que são a forma certa de estudar uma tecnologia nova muita das vezes vem de forma bruta e massiva em termos de conteúdo que muita das vezes atrasa caso em tenha que ler toda a tecnologia e resolver um problema rápido na empresa, aí eu decidi inserir podcasts falando das tecnologias de forma já resumida contando as suas experiencias com as tecnologias no mercado de trabalho sejam falhas ou exitos para que eu já tenha uma noção com quem já usa a mais tempo e assim todos os Desenvolvedores possam crescer mais e mais.**
+**A ideia da plataforma surgiu no momento em que me senti motivado em adquirir mais conhecimento técnico e sobre o mercado que me aguarda, que ocasionaria em ler mais vezes as documentações ou comprar cursos sem saber se isso seria algo relevante para o mercado. Sobre os cursos muita das vezes levam algum tempo a serem feitos visto que precisa ser bem elaborados e muito atraentes para o público. As documentações que são a forma certa de estudar uma tecnologia nova muita das vezes vem de forma bruta e massiva em termos de conteúdo que muita das vezes atrasa o processo, caso eu tenha que ler toda a tecnologia e resolver um problema rápido para a empresa, aí eu decidi inserir podcasts falando das tecnologias de forma já resumida, ouvindo as suas experiências com as tecnologias no mercado de trabalho sejam falhas ou êxitos para que eu já tenha uma noção com quem já usa a mais tempo e assim todos os Desenvolvedores possam crescer mais e mais.**
 
 ## OBJETIVOS
 
@@ -44,7 +52,7 @@
 **Objetivo Geral: Criar um Aplicativo desktop de podcasts para Desenvolvedores de software**
 
 apresenta de forma detalhada os resultados a serem alcançados por meio do trabalho científico
-**Objetivos Específicos: -Facilitar o aprendizado sobre a area de Desenvolvimento de software. -Informar o avanço da tecnologia -Manter os Desenvolvedores em constante aprendizado**
+**Objetivos Específicos: -Facilitar o aprendizado sobre a area de Desenvolvimento de software. -Informar o avanço da tecnologia -Manter os Desenvolvedores em constante aprendizado -Mudar a mentalidade sobre o mercado de trabalho -Formar futuros lideres na área de tecnologias**
 
 dizer para o leitor como eu fiz a minha pesquisa
 
@@ -53,7 +61,7 @@ dizer para o leitor como eu fiz a minha pesquisa
 **A realização dos estudos aplicados nesse trabalho seguem as mesmas metodologias de trabalhos científicos.**
 _ Criação: Exploratória, pesquisa._
 _ Tipo de coleta para a criação: Experimental, e estudo de casos._
-_ Fontes para o projeto de criação: Internet, documentos._
+_ Fontes para o projeto de criação: Internet,._
 
 ## DESENVOLVIMENTO
 
@@ -89,17 +97,21 @@ _ Fontes para o projeto de criação: Internet, documentos._
 
 **7.Podcasts educacionais: Um podcast educacional é um tipo de podcast onde o objetivo é transmitir conhecimento a alguém. Você pode compará-lo a um treinamento online, mas com áudio ao invés de vídeo. Este é um formato relativamente pouco utilizado, mas dado que as pessoas cada vez mais preferem aprender por áudio, espera-se que o número de podcasts e cursos de áudio educacionais aumente. Se você é um especialista, então um podcast educacional é geralmente bastante fácil de projetar. Há mais pessoas que se sentem mais à vontade para falar do que para se apresentar na frente de uma câmera. Por outro lado, com os podcasts educacionais é importante que o conteúdo seja da mais alta qualidade, não apenas o áudio. Você precisará, portanto, pensar cuidadosamente sobre os objetivos de aprendizado e as tarefas associadas.**
 
-## 3.	PROGRAMAÇÃO (LINGUAGENS E SEU CONCEITOS)
-## 3.1	CONCEITOS DE PROGRAMAÇÃO E DE LINGUAGEM DE PROGRAMAÇÃO
+## 3. PROGRAMAÇÃO (LINGUAGENS E SEU CONCEITOS)
+
+## 3.1 CONCEITOS DE PROGRAMAÇÃO E DE LINGUAGEM DE PROGRAMAÇÃO
+
 ## Definir: TypeScript
 
-## 3.3	BASE DE DADOS
+## 3.3 BASE DE DADOS
+
 ## Definir: Sql
 
 ## 4. IMPLEMENTAÇÃO DO PROJECTO
-## 4.1 TECNOLOGIAS USADAS
-## Definir: Next.js, Stitches, prisma
 
+## 4.1 TECNOLOGIAS USADAS
+
+## Definir: Next.js, Stitches, prisma
 
 ## DIAGRAMA DO PROJETO
 
@@ -108,3 +120,17 @@ _ Fontes para o projeto de criação: Internet, documentos._
 ## RECOMENDAÇÕES
 
 <img src='https://github.com/bernardojru.png' />
+
+## FALTA O FLUXOGRAMA E A CONCLUSÃO
+
+## CONCLUSÃO:
+
+1-importancia do trabalho na realidade,
+2-destacar os resultados
+3-
+
+**A tecnologia tem estado a evoluir bastante e precisamos nos adaptar a esse crescimento, estando em constante aprendizado, e como resposta pode se ver que uma plataforma de podcasts pode ajudar quem pretende crescer, sendo um local eficaz para adquirir conhecimento sobre vários tópicos.**
+
+**Assim chego a conclusão que a implementação dessa plataforma, em forma de um Aplicativo Desktop será benéfica para a sociedade devido o avanço tecnologia, pois fornece conhecimento técnico de forma ampla, favorecendo todos aqueles que pretendem se tornar Desenvolvedores de software.**
+
+conhecer o conhecido nos torna conhecidos pelo que sabemos

@@ -10,7 +10,7 @@ export function ToggleThemesButton() {
         {themes === "dark" ? (
           <Sun size={25} color="#fff" />
         ) : (
-          <Moon size={25} color="#fff" />
+          <Moon size={25} color="#111" />
         )}
       </button>
     </ToggleThemesButtonContainer>

@@ -1,8 +1,13 @@
+import {
+  PlayerButtonsContainer,
+  SliderContainer,
+  ButtonsContainer,
+} from "./styles";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useContext, useEffect, useRef, useState } from "react";
-import { PlayerContext } from "../../contexts/PlayerContext";
-import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
+import { PlayerContext } from "../../../contexts/PlayerContext";
+import { convertDurationToTimeString } from "../../../utils/convertDurationToTimeString";
 
 interface Episode {
   title: string;
@@ -70,29 +75,29 @@ export function PlayerButtons({ episode }: PlayerButtons) {
   }
 
   return (
-    <footer className={`self-stretch ${!episode ? "opacity-50" : ""}`}>
-      <div className="flex items-center gap-2 text-sm">
-        <span className="inline-block w-16 text-center">
+    <PlayerButtonsContainer>
+      <SliderContainer>
+        <span>
           {convertDurationToTimeString(progress)}
         </span>
-        <div className="flex-1">
+        <div className="slider">
           {episode ? (
             <Slider
               max={episode.duration}
               value={progress}
               onChange={() => handleSeek}
               trackStyle={{ backgroundColor: " #04D361" }}
-              railStyle={{ backgroundColor: " #9f75ff" }}
+              railStyle={{ backgroundColor: " ##5659EB" }}
               handleStyle={{ borderColor: " #04D361", borderWidth: 4 }}
             />
           ) : (
-            <div className="w-full h-1 bg-purple-300 rounded-sm"></div>
+            <div className="empty"></div>
           )}
         </div>
-        <span className="inline-block w-16 text-center">
+        <span>
           {convertDurationToTimeString(episode?.duration ?? 0)}
         </span>
-      </div>
+      </SliderContainer>
 
       {episode && (
         <audio
@@ -107,10 +112,9 @@ export function PlayerButtons({ episode }: PlayerButtons) {
         />
       )}
 
-      <div className="flex items-center justify-center mt-10 gap-6">
+      <ButtonsContainer>
         <button
           type="button"
-          className="bg-transparent border-none text-xs"
           disabled={!episode || episodeList.length === 1}
           onClick={toggleShuffling}
         >
@@ -123,14 +127,13 @@ export function PlayerButtons({ episode }: PlayerButtons) {
         <button
           onClick={playPrevious}
           type="button"
-          className="bg-transparent border-none text-xs"
           disabled={!episode || !hasPrevious}
         >
           <img src="/play-previous.svg" alt="Tocar anterior" />
         </button>
         <button
           type="button"
-          className="w-16 h-16 rounded-2xl bg-purple-400 flex items-center justify-center"
+          className="play"
           disabled={!episode}
           onClick={togglePlay}
         >
@@ -143,24 +146,18 @@ export function PlayerButtons({ episode }: PlayerButtons) {
         <button
           onClick={playNext}
           type="button"
-          className="bg-transparent border-none text-xs"
           disabled={!episode || !hasNext}
         >
           <img src="/play-next.svg" alt="Tocar Próxima" />
         </button>
-        <button
-          type="button"
-          className={`bg-transparent border-none text-xs`}
-          disabled={!episode}
-          onClick={toggleLoop}
-        >
+        <button type="button" disabled={!episode} onClick={toggleLoop}>
           <img
             className={`${isLooping && "isActive"}`}
             src="/repeat.svg"
             alt="Repetir"
           />
         </button>
-      </div>
-    </footer>
+      </ButtonsContainer>
+    </PlayerButtonsContainer>
   );
 }

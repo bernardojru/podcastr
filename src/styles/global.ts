@@ -5,12 +5,17 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
 
+    '.published': {
+      width: '9%',
+    },
+
     "::-webkit-scrollbar": {
-      width: 6,
+      width: 6, 
+      height: 6, 
     },
 
     "::-webkit-scrollbar-track": {
-      background: "$dark",
+      background: "transparent",
     },
 
     "::-webkit-scrollbar-thumb": {
@@ -20,8 +25,9 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    fontFamily: "Inter, sans-serif",
+    fontFamily: "Lexend, sans-serif",
     background: "$dark",
+    color: '$white'
   },
 
   button: {
