@@ -1,10 +1,10 @@
 import { styled } from "..";
 
-export const   PodcastContainer = styled('main', {
-  width: '100%',
-  height: '100%',
+export const PodcastContainer = styled("main", {
+  width: "100%",
+  height: "100%",
   background: "#131313",
-})
+});
 
 export const PodcastConst = styled("div", {
   overflowY: "scroll",
@@ -83,8 +83,6 @@ export const LatestEpisodeContainer = styled("section", {
       width: "31.25rem",
       fontSize: "0.8rem",
 
-      background: "rgb(13, 13, 13)",
-      border: "1px solid rgb(32, 35, 39)",
       padding: "1.25rem",
       borderRadius: "1.5rem",
       position: "relative",
@@ -170,15 +168,15 @@ export const LatestEpisodeContainer = styled("section", {
     div: {
       display: "flex",
       flexDirection: "column",
-      alignItems: 'start',
+      alignItems: "start",
 
       form: {
-        marginBottom: '2rem',
+        marginBottom: "2rem",
 
         input: {
           width: "23rem",
-        }
-      }
+        },
+      },
     },
     ul: {
       maxWidth: "34rem",

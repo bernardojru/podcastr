@@ -17,17 +17,16 @@ interface Results {
 
 interface SearchResultsProps {
   results: Results[];
-  latestEpisodes: Results[];
   allEpisodes: Results[];
+  latestEpisodes: Results[];
 }
 
 export function SearchResults({
   results,
   allEpisodes,
-  latestEpisodes,
+  latestEpisodes
 }: SearchResultsProps) {
-  const { playList } = usePlayer();
-  const episodeList = [...latestEpisodes, ...allEpisodes];
+  const { play } = usePlayer();
   return (
     <SearchResultsContainer>
       {results.map((episode, index) => (
@@ -49,7 +48,7 @@ export function SearchResults({
           <span>
             <button
               onClick={() =>
-                playList(episodeList, index)
+                play(episode)
               }
               type="button"
             >

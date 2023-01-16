@@ -92,15 +92,16 @@ export const EndContent = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '.5rem',
-
+  
   a: {
     textDecoration: 'none',
     background: '#131313',
     color: 'gray',
     borderRadius: '30px',
     padding: '.5rem 2rem',
-
+    
     display: 'flex',
+    alignItems: 'center',
     alignContent: 'center',
     gap: '.5rem',
 

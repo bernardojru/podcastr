@@ -1,3 +1,10 @@
+import {
+  Container,
+  EpisodeContainer,
+  ThumbnailContainer,
+  Nav,
+  Description,
+} from "../../styles/pages/slug";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { api } from "../../lib/axios";
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
@@ -7,6 +14,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { usePlayer } from "../../contexts/PlayerContext";
+import { Header } from "../../components/Header";
+import { useThemes } from "../../hooks/useThemes";
 
 type Episode = {
   id: string;
@@ -25,21 +34,22 @@ interface EpisodeProps {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
-  const {play} = usePlayer()
+  const { themes } = useThemes();
+  const { play } = usePlayer();
 
   return (
     <>
       <Head>
         <title>{episode.title} | Podcastr</title>
       </Head>
-      <div className="overflow-y-scroll h-calc">
-        <div className="max-w-[45rem] py-12 px-8 m-auto">
-          <div className="relative">
+      <Header />
+      <Container
+        style={{ background: `${themes === "dark" ? "#131313" : "#eee"}` }}
+      >
+        <EpisodeContainer  style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>
+          <ThumbnailContainer>
             <Link href="/">
-              <button
-                type="button"
-                className="w-12 h-12 rounded-xl absolute z-10 left-0 top-2/4 bg-purple-300 flex items-center justify-center -translate-x-1/2"
-              >
+              <button type="button">
                 <img src="/arrow-left.svg" alt="Voltar" />
               </button>
             </Link>
@@ -48,31 +58,25 @@ export default function Episode({ episode }: EpisodeProps) {
               height={160}
               src={episode.thumbnail}
               alt={episode.title}
-              className="rounded-2xl object-cover"
             />
-            <button
-            onClick={() => play(episode)}
-              type="button"
-              className="w-12 h-12 rounded-xl absolute z-10 right-0 top-2/4 bg-green-500
-              flex items-center justify-center translate-x-1/2"
-            >
+            <button onClick={() => play(episode)} type="button">
               <img src="/play.svg" alt="Tocar" />
             </button>
-          </div>
+          </ThumbnailContainer>
 
-          <header className="pb-4 border-b border-gray-100">
-            <h1 className="mt-8 mb-6 text-3xl">{episode.title}</h1>
-            <span className="text-sm"> {episode.members},</span>
-            <span className="text-sm"> {episode.publishedAt},</span>
-            <span className="text-sm"> {episode.durationAsString}</span>
-          </header>
+          <Nav>
+            <h1>{episode.title}</h1>
+            <span> {episode.members},</span>
+            <span> {episode.publishedAt},</span>
+            <span> {episode.durationAsString}</span>
+          </Nav>
 
-          <div
-            className="mt-8 leading-6 text-gray-800"
+          <Description
+           style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}
             dangerouslySetInnerHTML={{ __html: episode.description }}
           />
-        </div>
-      </div>
+        </EpisodeContainer>
+      </Container>
     </>
   );
 }

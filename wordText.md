@@ -22,10 +22,6 @@ _Com o Login o usuário pode fazer pesquisas sem o login não é permitido fazer
 **electron**
 **pwa github: https://github.com/shadowwalker/next-pwa**
 
-## Resumo: O resumo de TCC ou abstract (termo em inglês) é uma parte fundamental do trabalho e nela deve estar, de maneira resumida, as informações gerais sobre o trabalho. O resumo aparece logo no início do trabalho, após o título. O resumo de TCC segue as normas da ABNT (NBR 6028) e pode variar um pouco, dependendo do trabalho acadêmico.
-
-**resumo: .**
-
 ## Introdução da app
 
 **Como desenvolvedor de softwares nosso trabalho consiste sempre em achar algumas soluções para resolver problemas, e cada problema tem uma forma especifica de ser resolvido, é aí que entram as famosas linguagens de programação, frameworks, bibliotecas entre outros. Que na maioria das vezes temos que aprender a usá-las de modo eficaz, lendo a própria documentação feita pela própria empresa para nos ensinar como usar a linguagem, e essa documentação vem sempre escrita em ingles impedindo quem não conhece a lingua de aprender mais sobre o assunto.** // não acabei
@@ -134,3 +130,34 @@ _ Fontes para o projeto de criação: Internet,._
 **Assim chego a conclusão que a implementação dessa plataforma, em forma de um Aplicativo Desktop será benéfica para a sociedade devido o avanço tecnologia, pois fornece conhecimento técnico de forma ampla, favorecendo todos aqueles que pretendem se tornar Desenvolvedores de software.**
 
 conhecer o conhecido nos torna conhecidos pelo que sabemos
+
+### PARTE QUE FALTA NO PROJECTO
+
+## Resumo: O resumo de TCC ou abstract (termo em inglês) é uma parte fundamental do trabalho e nela deve estar, de maneira resumida, as informações gerais sobre o trabalho. O resumo aparece logo no início do trabalho, após o título. O resumo de TCC segue as normas da ABNT (NBR 6028) e pode variar um pouco, dependendo do trabalho acadêmico.
+
+**resumo: 1.O mercado tem cada mais demandado pessoas com alta qualidade de conhecimento e diversas habilidades, resolvendo os problemas que uma empresa possui, tendo que adquirir outros conhecimentos pois a tecnologia tem estado a crescer diariamente. Os programadores dessas empresas precisam dominar as tecnologias e não ser dominados por elas ,se adaptando aos projectos que empresa pretende fornecer aos clientes. ##2.O presente trabalho traz a criação de um Aplicativo Desktop feito para toda e qualquer pessoa que pretende entrar ou crescer na área da programação, mas simplesmente com podcasts informáticos como a solução para dar um aumento nos seus conhecimentos,. O objetivo é inovar com a criação de um Aplicativo Desktop que fornecerá conhecimento atual, e experiencia de outras pessoas que estão na área a mais tempo. ##3.Para o desenvolvimento desse trabalho utilizou-se o método de interação em que os usuários irão lidar com uma interface, navegando até escolher um podcasts. Na realização do software foram utilizadas as principais tecnologias de programação como typeScript, NextJs, Prisma, Stitches, PWA, SQLite. No final da pesquisa conclui-se que o Aplicativo Desktop, fornece podcasts com o conteúdo voltado a area da programação**
+
+_Palavra-Chave: podcasts para desenvolvedores de software_
+
+**abstract: 1.The market has increasingly demanded people with high quality knowledge and diverse skills, solving the problems that a company has, having to acquire other knowledge because technology has been growing daily. The programmers of these companies need to master the technologies and not be dominated by them, adapting to the projects that company intends to provide to customers. 
+
+##2.The present work brings the creation of a Desktop Application made for anyone who wants to enter or grow in the area of programming, but simply with computer podcasts as the solution to give an increase in their knowledge,. The goal is to innovate with the creation of a Desktop Application that will provide current knowledge, and experience of other people who are in the area longer. 
+
+##3.For the development of this work, the interaction method was used in which users will deal with an interface, navigating until choosing a podcasts. In the realization of the software were used the main programming technologies such as typeScript, NextJs, Prisma, Stitches, PWA, SQLite. At the end of the research it is concluded that the Desktop Application, provides podcasts with content focused on the area of programming**
+
+*Keyword: podcasts for software developers*
+
+**LISTA DE TABELAS: Tabela 1- 2.3 TABELA DEMOSTRATIVA DE FUNÇÕES DOS SERVIÇOS Do PODCAST PARA DESENVOLVEDORES DE SOFTWARE:**
+
+**Função | Descrição: COMO | Exemplos: QUEM**
+
+**Acolher | Receber todo o tipo de usuário que anceia aprender sem privar o conhecimento. Fornecendo uma experiencia offline. Em uma comunidade só para Desenvolvedores |.......**
+**Informar: | Fornecer ao utilizador novidades sobre o mundo da programação. |.....**
+**Formar: | impactar vidas com o conhecimento dado |......**
+
+**LISTA DE SIGLAS**
+
+**Mostrar também a foto do player e da lista de podcast na implementação com o typeScript e nextjs**
+
+
+## REPASSAR O PROJECTO NO DOCS.GOOGLE.COM PARA EVITAR QUEBRA DE LINHAS e virar um pdf.

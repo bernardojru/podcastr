@@ -26,7 +26,7 @@ export function Header() {
   // console.log(session?.user?.image)
 
   return (
-    <HeaderContainer style={{background: `${themes === 'dark' ? 'rgb(13, 13, 13)' : '#eee'}`, borderBottom: `${themes === 'dark' ? '1px solid rgb(32, 35, 39)' : '1px solid #999'}`,}}>
+    <HeaderContainer style={{background: `${themes === 'dark' ? 'rgb(13, 13, 13)' : '#f7f7f7'}`, borderBottom: `${themes === 'dark' ? '1px solid rgb(32, 35, 39)' : '1px solid #999'}`,}}>
         <img src="/logo-light.svg" alt="Podcastr" />
 
       {session && (
@@ -59,10 +59,9 @@ export function Header() {
           </Navigation>
         </>
       )}
-
       <EndContent>
         {!session && (
-          <Link href="/">
+          <Link href="/" style={{background: `${themes === 'dark' ? '#131313' : '#aeaeb0'}`, color: `${themes === 'dark' ? 'white' : '#131313'}`}}>
             <ArrowLeft size={25} />
             voltar
           </Link>
