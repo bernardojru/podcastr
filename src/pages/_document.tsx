@@ -15,6 +15,15 @@ export default function Document() {
 
         <link rel="shortcut icon" href="favicon.png" type="image/png" />
 
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
+
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="manifest" href="/manifest.json" />
+
         <style
           id="stitches"
           dangerouslySetInnerHTML={{ __html: getCssText() }}
