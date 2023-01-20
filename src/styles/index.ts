@@ -12,8 +12,13 @@ export const {
 } = createStitches({
   theme: {
     colors: {
+      primary: "",
+      transparent: "",
+      color: "",
+      text: "",
+
       white: "#fff",
-      dark: '#131313',
+      dark: "#131313",
       gray50: "#F7F8FA",
       gray100: "#E6E8EB",
       gray200: "#333",
@@ -23,16 +28,11 @@ export const {
       gray900: "#44475A",
       gray950: "rgb(178, 185, 255);",
 
-      blue500: 'rgb(67, 71, 254);',
+      blue500: "rgb(67, 71, 254);",
 
       green500: " #04D361",
-
-      purple300: "#9F75FF",
-      purple400: "#9164FA",
-      purple500: "#8257E5",
-      purple800: "#6F48C9",
     },
-    
+
     fontSizes: {
       md: "1.125rem",
       lg: "1.25rem",

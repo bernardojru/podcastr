@@ -1,11 +1,11 @@
-import { HomeContainerDark, HomeContainerLight } from "../styles/pages/home";
+import { HomeContainer,  } from "../styles/pages/home";
 
 import Head from "next/head";
-import { GetServerSideProps } from "next";
-import { getSession, signIn, useSession } from "next-auth/react";
+import { GetStaticProps } from "next";
 import { useThemes } from "../hooks/useThemes";
 import { ToggleThemesButton } from "../components/ToggleThemesButton";
 import Link from "next/link";
+import { light } from "../styles/themes/light";
 
 export default function Home() {
   const { themes } = useThemes();
@@ -14,13 +14,12 @@ export default function Home() {
       <Head>
         <title>Home | Podcastr</title>
       </Head>
-      {themes === "dark" ? (
-        <HomeContainerDark>
+        <HomeContainer className={themes}>
           <header>
             <img src="/simple-logo.svg" alt="" />
             <nav>
               <Link href="/podcast" prefetch>
-                <button>Entrar</button>
+                <button>Entrar grátis</button>
               </Link>
               <ToggleThemesButton />
             </nav>
@@ -34,59 +33,20 @@ export default function Home() {
               área de desenvolvimento de softwares.
             </p>
 
-            <button onClick={() => signIn("google")}>Entrar com Google</button>
+            <button>Fazer Login</button>
           </section>
 
           <section>
             <img src="/template.png" alt="" />
           </section>
-        </HomeContainerDark>
-      ) : (
-        <HomeContainerLight>
-          <header>
-            <img src="/simple-logo.svg" alt="" />
-            <nav>
-              <Link href="/podcast">
-                <button>Entrar</button>
-              </Link>
-              <ToggleThemesButton />
-            </nav>
-          </header>
-
-          <section>
-            <span>Podcast Application</span>
-            <h1>Podcastr</h1>
-            <p>
-              Uma plataforma construída para transmissão de podcasts sobre a
-              area de desenvolvimento de softwares.
-            </p>
-
-            <button onClick={() => signIn("google")}>Entrar com Google</button>
-          </section>
-
-          <section>
-            <img src="/template.png" alt="" />
-          </section>
-        </HomeContainerLight>
-      )}
+        </HomeContainer>      
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
-
-  if (session) {
-    return {
-      redirect: {
-        destination: "/podcast",
-        permanent: false,
-      },
-    };
-  }
+export const getStaticProps: GetStaticProps = async () => {
   return {
-    props: {
-      session,
-    },
-  };
-};
+    props: {},
+    revalidate: 1000 // uma hora: 60 * 60 * 1
+  }
+}

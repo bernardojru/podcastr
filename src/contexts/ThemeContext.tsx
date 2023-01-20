@@ -1,4 +1,7 @@
+import { type } from "os";
 import { createContext, ReactNode, useState } from "react";
+import { dark } from "../styles/themes/dark";
+import { light } from "../styles/themes/light";
 
 interface ThemeContextType {
   themes: string;
@@ -9,19 +12,14 @@ interface ThemeContextProviderProps {
   children: ReactNode;
 }
 
-type Themes = "dark" | "light";
 
 export const ThemeContext = createContext({} as ThemeContextType);
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
-  const [themes, setThemes] = useState<Themes>("dark");
+  const [themes, setThemes] = useState<any>(dark);
 
   function toggleThemes() {
-    if (themes === "dark") {
-      setThemes("light");
-    } else {
-      setThemes("dark");
-    }
+    setThemes(themes === dark ? light : dark);
   }
 
   return (
