@@ -1,45 +1,64 @@
-import { HomeContainer,  } from "../styles/pages/home";
+import { HomeContainer } from "../styles/pages/home";
 
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { useThemes } from "../hooks/useThemes";
 import { ToggleThemesButton } from "../components/ToggleThemesButton";
 import Link from "next/link";
-import { light } from "../styles/themes/light";
+import * as Dialog from "@radix-ui/react-dialog";
+import { Login } from "../components/login";
+import { useState } from "react";
 
 export default function Home() {
+  const [previewImg, setPreviewImg] = useState();
   const { themes } = useThemes();
+
+  function handleFile(e: any) {
+    const image = e.target.files[0];
+
+    setPreviewImg(image);
+  }
   return (
     <>
       <Head>
         <title>Home | Podcastr</title>
       </Head>
-        <HomeContainer className={themes}>
-          <header>
-            <img src="/simple-logo.svg" alt="" />
-            <nav>
-              <Link href="/podcast" prefetch>
-                <button>Entrar grátis</button>
-              </Link>
-              <ToggleThemesButton />
-            </nav>
-          </header>
+      <HomeContainer className={themes}>
+        <header>
+          <img src="/simple-logo.svg" alt="" />
+          <nav>
+            <Link href="/podcast" prefetch>
+              <button>Entrar offline</button>
+            </Link>
+            <ToggleThemesButton />
+          </nav>
+        </header>
+        {/* AQUI AQUI AQUI UPLOAD DE IMAGEM */}
+        <div>
+          <img src={previewImg && URL.createObjectURL(previewImg)} alt="" />
+          <h1>Aqui</h1>
+          <input type="file" onChange={handleFile} />
+        </div>
 
-          <section>
-            <span>Podcast Application</span>
-            <h1>Podcastr</h1>
-            <p>
-              Uma plataforma construída para transmissão de podcasts sobre a
-              área de desenvolvimento de softwares.
-            </p>
+        <section>
+          <span>Podcast Application</span>
+          <h1>Podcastr</h1>
+          <p>
+            Uma plataforma construída para transmissão de podcasts sobre a área
+            de desenvolvimento de softwares.
+          </p>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <button>Fazer Login</button>
+            </Dialog.Trigger>
+            <Login />
+          </Dialog.Root>
+        </section>
 
-            <button>Fazer Login</button>
-          </section>
-
-          <section>
-            <img src="/template.png" alt="" />
-          </section>
-        </HomeContainer>      
+        <section>
+          <img src="/template.png" alt="" />
+        </section>
+      </HomeContainer>
     </>
   );
 }
@@ -47,6 +66,7 @@ export default function Home() {
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {},
-    revalidate: 1000 // uma hora: 60 * 60 * 1
-  }
-}
+    revalidate: 1000, // uma hora: 60 * 60 * 1
+  };
+};
+

@@ -5,7 +5,7 @@ export const HomeContainer = styled("main", {
   minHeight: "100vh",
   background: "$primary",
 
-  transition: 'all .3s ease-in-out',
+  transition: "all .3s ease-in-out",
 
   // background: "url(/images/blur.svg) no-repeat ",
   backgroundSize: "100vw",
@@ -81,18 +81,17 @@ export const HomeContainer = styled("main", {
     },
 
     button: {
-
       width: "14rem",
       height: "4rem",
-      
+
       border: "2px solid $color",
       borderRadius: "1rem",
       background: "$transparent",
-      
+
       fontWeight: 700,
       fontSize: "1rem",
-      
+
       color: "$color",
-    }
+    },
   },
 });

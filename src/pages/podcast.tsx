@@ -16,7 +16,6 @@ import Link from "next/link";
 import { usePlayer } from "../contexts/PlayerContext";
 import { useThemes } from "../hooks/useThemes";
 import { MagnifyingGlass } from "phosphor-react";
-import { useSession } from "next-auth/react";
 import { Header } from "../components/Header";
 import { Player } from "../components/Player";
 import { FormEvent, useState } from "react";
@@ -41,7 +40,6 @@ interface PodcastProps {
 export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
   const { playList } = usePlayer();
   const { themes } = useThemes();
-  const { data: session } = useSession();
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
 
@@ -78,7 +76,6 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
             <div>
               <h2 style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>Últimos lançamentos</h2>
 
-              {session && (
                 <form onSubmit={handleSearch}>
                   <input
                     type="search"
@@ -90,7 +87,6 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                     <MagnifyingGlass size={20} color="#fff" />
                   </button>
                 </form>
-              )}
             </div>
 
             <ul>

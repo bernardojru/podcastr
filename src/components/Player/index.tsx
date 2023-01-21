@@ -3,7 +3,6 @@ import Image from "next/image";
 import { usePlayer } from "../../contexts/PlayerContext";
 import { PlayerButtons } from "./PlayerButtons";
 
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export function Player() {
@@ -12,7 +11,6 @@ export function Player() {
   function handleShowPlayer() {
     setShow((state) => !state);
   }
-  const { data: session } = useSession();
   const { episodeList, currentEpisodeIndex } = usePlayer();
 
   const episode = episodeList[currentEpisodeIndex];

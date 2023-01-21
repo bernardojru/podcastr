@@ -5,8 +5,6 @@ import { Player } from "../components/Player";
 import { PlayerContextProvider } from "../contexts/PlayerContext";
 import { ThemeContextProvider } from "../contexts/ThemeContext";
 
-import { SessionProvider } from "next-auth/react";
-
 globalStyles();
 
 export default function App({
@@ -14,7 +12,6 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
       <ThemeContextProvider>
         <PlayerContextProvider>
           <Container>
@@ -25,7 +22,6 @@ export default function App({
           </Container>
         </PlayerContextProvider>
       </ThemeContextProvider>
-    </SessionProvider>
   );
 }
 // acessar o : https://stitches.dev/docs/variants
