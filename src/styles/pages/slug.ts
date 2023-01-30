@@ -1,30 +1,5 @@
 import { styled } from "../.";
 
-export const Button = styled("button", {
-  margin: "2rem",
-  border: "none",
-  padding: "1rem 3rem",
-  borderRadius: "30px",
-
-  variants: {
-    colorTheme: {
-      violet: {
-        backgroundColor: "blueviolet",
-        color: "white",
-        "&:hover": {
-          backgroundColor: "darkviolet",
-        },
-      },
-      gray: {
-        backgroundColor: "gainsboro",
-        "&:hover": {
-          backgroundColor: "lightgray",
-        },
-      },
-    },
-  },
-});
-
 export const Container = styled('div', {
   width: '100%',
 })

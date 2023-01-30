@@ -26,6 +26,7 @@ export const LatestEpisodeContainer = styled("section", {
       marginBottom: "1.5rem",
       fontSize: "1.5rem",
       lineHeight: "2rem",
+      color: "$h2",
     },
 
     form: {
@@ -37,7 +38,7 @@ export const LatestEpisodeContainer = styled("section", {
         width: "30rem",
         padding: ".8rem",
         borderRadius: "0.5rem",
-        background: "rgb(13, 13, 13)",
+        background: "$li",
         color: "#fff",
 
         border: "2px solid transparent",
@@ -48,14 +49,13 @@ export const LatestEpisodeContainer = styled("section", {
         },
 
         "&:hover": {
-          border: "2px solid $dark",
           outline: "2px solid rgb(32, 35, 39)",
           transition: "all .2s ease-in-out",
         },
       },
 
       button: {
-        background: "rgb(13, 13, 13)",
+        background: "$li",
         padding: "0.5rem",
         borderRadius: "0.5rem",
         lineHeight: "0",
@@ -65,7 +65,6 @@ export const LatestEpisodeContainer = styled("section", {
 
         "&:hover": {
           transition: "all .2s ease-in-out",
-          background: "transparent",
           outline: "2px solid rgb(32, 35, 39)",
         },
       },
@@ -85,6 +84,7 @@ export const LatestEpisodeContainer = styled("section", {
       padding: "1.25rem",
       borderRadius: "1.5rem",
       position: "relative",
+      background: "$li",
 
       // width: '25rem',
 
@@ -104,13 +104,15 @@ export const LatestEpisodeContainer = styled("section", {
         flexDirection: "column",
         alignItems: "start",
         marginLeft: "1rem",
+        color: "$h2",
 
         gap: ".4rem",
 
         a: {
           display: "block",
           textDecoration: "none",
-          color: "gray",
+          color: "$h2",
+
           fontSize: ".9rem",
           textAlign: "start",
 
@@ -144,8 +146,7 @@ export const LatestEpisodeContainer = styled("section", {
 
         width: "2.5rem",
         height: "2.5rem",
-
-        background: "rgb(13, 13, 13)",
+        background: "$button",
         border: "1px solid rgb(32, 35, 39)",
         borderRadius: "0.5rem",
 
@@ -165,7 +166,6 @@ export const LatestEpisodeContainer = styled("section", {
 
   "@bp3": {
     ul: {
-
       gap: "1.5rem",
 
       li: {
@@ -182,6 +182,7 @@ export const AllEpisodeContainer = styled("section", {
   h2: {
     fontSize: "1.25rem",
     lineHeight: "1.75rem",
+    color: "$h2",
   },
 
   table: {
@@ -191,6 +192,7 @@ export const AllEpisodeContainer = styled("section", {
     thead: {
       tr: {
         border: "1px solid #333",
+        color: "$h2",
 
         th: {
           textTransform: "uppercase",
@@ -209,8 +211,7 @@ export const AllEpisodeContainer = styled("section", {
           fontSize: "0.8rem",
           lineHeight: "1.5rem",
           paddingRight: "2rem",
-
-          // width: "1rem",
+          color: "$h2",
 
           "> img": {
             width: "2rem",
@@ -225,7 +226,7 @@ export const AllEpisodeContainer = styled("section", {
             fontSize: ".8rem",
 
             textDecoration: "none",
-            color: "gray",
+            color: "$h2",
 
             lineHeight: "1.5rem",
 
@@ -237,7 +238,7 @@ export const AllEpisodeContainer = styled("section", {
           },
 
           button: {
-            background: "rgb(13, 13, 13)",
+            background: "$button",
             border: "1px solid rgb(32, 35, 39)",
 
             width: "2rem",

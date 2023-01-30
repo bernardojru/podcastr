@@ -68,19 +68,11 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
         <title>Podcast | Podcastr</title>
       </Head>
       <Header />
-      <PodcastContainer 
-      className={themes}
-      >
+      <PodcastContainer className={themes}>
         <PodcastConst>
           <LatestEpisodeContainer>
             <div>
-              <h2
-                style={{
-                  color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
-                }}
-              >
-                Últimos lançamentos
-              </h2>
+              <h2>Últimos lançamentos</h2>
 
               <form onSubmit={handleSearch}>
                 <input
@@ -97,14 +89,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
 
             <ul>
               {latestEpisodes.map((latestEpisode, index) => (
-                <li
-                  key={latestEpisode.id}
-                  style={{
-                    background: `${
-                      themes === "dark" ? "rgb(13, 13, 13)" : "#aeaeb0"
-                    }`,
-                  }}
-                >
+                <li key={latestEpisode.id}>
                   <Image
                     width={192}
                     height={192}
@@ -112,17 +97,8 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                     alt={latestEpisode.title}
                   />
 
-                  <div
-                    style={{
-                      color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
-                    }}
-                  >
-                    <Link
-                      href={`/episodes/${latestEpisode.id}`}
-                      style={{
-                        color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
-                      }}
-                    >
+                  <div>
+                    <Link href={`/episodes/${latestEpisode.id}`}>
                       {latestEpisode.title}
                     </Link>
                     <p>{latestEpisode.members}</p>
@@ -133,9 +109,6 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                   </div>
 
                   <button
-                    style={{
-                      background: `${themes === "dark" ? "#131313" : "#eee"}`,
-                    }}
                     onClick={() => playList(episodeList, index)}
                     type="button"
                   >
@@ -147,11 +120,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
           </LatestEpisodeContainer>
 
           <AllEpisodeContainer>
-            <h2
-              style={{ color: `${themes === "dark" ? "#aeaeb0" : "#131313"}` }}
-            >
-              Todos episódios
-            </h2>
+            <h2>Todos episódios</h2>
             {results.length > 0 ? (
               <SearchResults
                 results={results}
@@ -161,11 +130,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
             ) : (
               <table cellSpacing={0}>
                 <thead>
-                  <tr
-                    style={{
-                      color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
-                    }}
-                  >
+                  <tr>
                     <th></th>
                     <th>PODCAST</th>
                     <th>INTEGRANTES</th>
@@ -188,42 +153,23 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                           />
                         </td>
                         <td>
-                          <Link
-                            href={`/episodes/${episode.id}`}
-                            style={{
-                              color: `${
-                                themes === "dark" ? "#aeaeb0" : "#131313"
-                              }`,
-                            }}
-                          >
+                          <Link href={`/episodes/${episode.id}`}>
                             {episode.title}
                           </Link>
                         </td>
                         <td
-                          style={{
-                            color: `${
-                              themes === "dark" ? "#aeaeb0" : "#131313"
-                            }`,
-                          }}
+                          
                         >
                           {episode.members}
                         </td>
                         <td
                           className="published"
-                          style={{
-                            color: `${
-                              themes === "dark" ? "#aeaeb0" : "#131313"
-                            }`,
-                          }}
+                          
                         >
                           {episode.publishedAt}
                         </td>
                         <td
-                          style={{
-                            color: `${
-                              themes === "dark" ? "#aeaeb0" : "#131313"
-                            }`,
-                          }}
+                          
                         >
                           {episode.durationAsString}
                         </td>

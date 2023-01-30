@@ -16,6 +16,7 @@ import Link from "next/link";
 import { usePlayer } from "../../contexts/PlayerContext";
 import { Header } from "../../components/Header";
 import { useThemes } from "../../hooks/useThemes";
+import { dark } from "../../styles/themes/dark";
 
 type Episode = {
   id: string;
@@ -44,9 +45,11 @@ export default function Episode({ episode }: EpisodeProps) {
       </Head>
       <Header />
       <Container
-        style={{ background: `${themes === "dark" ? "#131313" : "#eee"}` }}
+        style={{ background: `${themes === dark ? "#131313" : "#eee"}` }}
       >
-        <EpisodeContainer  style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>
+        <EpisodeContainer
+          style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
+        >
           <ThumbnailContainer>
             <Link href="/podcast">
               <button type="button">
@@ -72,7 +75,7 @@ export default function Episode({ episode }: EpisodeProps) {
           </Nav>
 
           <Description
-           style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}
+            style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
             dangerouslySetInnerHTML={{ __html: episode.description }}
           />
         </EpisodeContainer>

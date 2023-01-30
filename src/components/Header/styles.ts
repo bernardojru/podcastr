@@ -6,7 +6,7 @@ export const HeaderContainer = styled("header", {
 
   color: "#fff",
   background: "$primary",
-  borderBottom: '1px solid $gray100',
+  borderBottom: '1px solid $border',
 
   display: "flex",
   alignItems: "center",
@@ -96,10 +96,11 @@ export const EndContent = styled(Link, {
   alignItems: 'center',
   justifyContent: 'center',
   background: '$gray500',
-  padding: '$3',
-  borderRadius: '$full',
+  borderRadius: '$lg',
+  height: '2rem',
+  width: '4rem',
 
-  color: '$text',
+  color: 'white',
 
   
   textDecoration: 'none',

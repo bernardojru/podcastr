@@ -26,7 +26,15 @@ interface User {
 export function Header() {
   const { themes } = useThemes();
   const [user, setUser] = useState<User | any>("");
-  
+
+  // async function get() {
+  //   const queryUser = await prisma.user.findUnique({
+  //     where: {
+  //       email: 'iecie@gamil.com'
+  //     },
+  //   });
+
+  // }
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +52,7 @@ export function Header() {
         <Navigation>
           <div>
             {/* AQUI AQUI AQUI UPLOAD DE IMAGEM */}
-            
+
             {/* Termina aqui */}
             <button onClick={openExitButton}>
               <img

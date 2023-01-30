@@ -16,6 +16,10 @@ export const {
       transparent: "",
       color: "",
       text: "",
+      h2: "",
+      li: "",
+      border: "",
+      button: "",
 
       white: "#fff",
       dark: "#131313",
@@ -33,10 +37,10 @@ export const {
       gray800: "#202024",
       gray900: "#121214",
 
-      blue100: '#6866FB',
-      blue200: '#5659EB',
-      blue300: '#4347FE',
-      blue400: '#3846D4',
+      blue100: "#6866FB",
+      blue200: "#5659EB",
+      blue300: "#4347FE",
+      blue400: "#3846D4",
 
       error: "#d15151",
     },

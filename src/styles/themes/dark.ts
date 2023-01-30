@@ -9,6 +9,10 @@ export const dark = createTheme({
     gray500: "#505059",
     gray900: "#121214",
     gray200: '#A9A9B2',
+    h2: '#aeaeb0',
+    li: 'rgb(13, 13, 13)',
+    border: '#222',
+    button: '#eee'
   },
 });
 

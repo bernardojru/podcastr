@@ -4,7 +4,7 @@ export const SearchResultsContainer = styled("main", {
   display: "flex",
   flexDirection: "column",
   gap: ".5rem",
-  marginTop: '2rem',
+  marginTop: "2rem",
 
   div: {
     borderRadius: "1.5rem",
@@ -12,14 +12,16 @@ export const SearchResultsContainer = styled("main", {
 
     display: "flex",
     alignItems: "center",
-    paddingLeft: '1rem',
-    paddingTop: '0.5rem',
+    paddingLeft: "1rem",
+    paddingTop: "0.5rem",
 
     span: {
       fontSize: "0.8rem",
       lineHeight: "1.5rem",
       paddingRight: "2rem",
-      textAlign: 'center',
+      color: "$h2",
+
+      textAlign: "center",
 
       "> img": {
         width: "6rem",
@@ -31,12 +33,11 @@ export const SearchResultsContainer = styled("main", {
 
       a: {
         textDecoration: "none",
-        color: "gray",
+        color: "$h2",
 
         "&:hover": {
           textDecoration: "underline",
-          color: "white",
-          transaction: 'all .8s'
+          transaction: "all .8s",
         },
       },
 
@@ -44,7 +45,8 @@ export const SearchResultsContainer = styled("main", {
         width: "2.5rem",
         height: "2.5rem",
 
-        background: "rgb(13, 13, 13)",
+        background: "$h2",
+
         border: "1px solid rgb(32, 35, 39)",
         borderRadius: "0.5rem",
 
