@@ -1,5 +1,6 @@
-import { styled } from "../../styles/.";
+import { keyframes, styled } from "../../styles/.";
 import * as Dialog from "@radix-ui/react-dialog";
+import { CircleNotch } from "phosphor-react";
 
 export const LoginContainer = styled(Dialog.Content, {
   minWidth: "27rem",
@@ -103,4 +104,24 @@ export const CloseButton = styled(Dialog.Close, {
     background: "$gray700",
     transition: "all .2s ease-in-out",
   },
+});
+
+
+export const MessageError = styled('span', {
+  color: '$error',
+  fontSize: '$sm'
+})
+
+const Load = keyframes({
+  to: {
+    transform: "rotate(0)",
+  },
+  from: {
+    transform: "rotate(360deg)",
+  },
+});
+
+export const Loading = styled(CircleNotch, {
+  textAlign: "center",
+  animation: ` 2s linear   ${Load}  infinite`,
 });

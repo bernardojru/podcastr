@@ -1,9 +1,12 @@
 import { styled } from "../../styles/.";
+import Link from "next/link";
 
 export const HeaderContainer = styled("header", {
   height: "5rem",
 
   color: "#fff",
+  background: "$primary",
+  borderBottom: '1px solid $gray100',
 
   display: "flex",
   alignItems: "center",
@@ -88,25 +91,18 @@ export const DetailsProfile = styled("div", {
   },
 });
 
-export const EndContent = styled('div', {
+export const EndContent = styled(Link, {
   display: 'flex',
   alignItems: 'center',
-  gap: '.5rem',
-  
-  a: {
-    textDecoration: 'none',
-    background: '#131313',
-    color: 'gray',
-    borderRadius: '30px',
-    padding: '.5rem 2rem',
-    
-    display: 'flex',
-    alignItems: 'center',
-    alignContent: 'center',
-    gap: '.5rem',
+  justifyContent: 'center',
+  background: '$gray500',
+  padding: '$3',
+  borderRadius: '$full',
 
-    '&:hover': {
-      color: '#fff',
-    }
-  }
+  color: '$text',
+
+  
+  textDecoration: 'none',
+  marginRight: '$5',
+  
 })

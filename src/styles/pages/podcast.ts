@@ -3,7 +3,7 @@ import { styled } from "..";
 export const PodcastContainer = styled("main", {
   width: "100%",
   height: "100%",
-  background: "#131313",
+  background: "$primary",
 });
 
 export const PodcastConst = styled("div", {
@@ -11,12 +11,11 @@ export const PodcastConst = styled("div", {
   height: "calc(100vh - 6rem)",
   width: "75rem",
   margin: "auto",
-  color: "gray",
+  color: "$color",
 });
 
 export const LatestEpisodeContainer = styled("section", {
   margin: "2rem",
-  // maxWidth: "1000px",
   div: {
     display: "flex",
     alignItems: "center",
@@ -165,24 +164,8 @@ export const LatestEpisodeContainer = styled("section", {
   },
 
   "@bp3": {
-    div: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "start",
-
-      form: {
-        marginBottom: "2rem",
-
-        input: {
-          width: "23rem",
-        },
-      },
-    },
     ul: {
-      maxWidth: "34rem",
 
-      display: "grid",
-      gridTemplateColumns: "1fr",
       gap: "1.5rem",
 
       li: {

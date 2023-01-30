@@ -68,30 +68,43 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
         <title>Podcast | Podcastr</title>
       </Head>
       <Header />
-      <PodcastContainer
-        style={{ background: `${themes === "dark" ? "#131313" : "#eee"}`,}}
+      <PodcastContainer 
+      className={themes}
       >
         <PodcastConst>
           <LatestEpisodeContainer>
             <div>
-              <h2 style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>Últimos lançamentos</h2>
+              <h2
+                style={{
+                  color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
+                }}
+              >
+                Últimos lançamentos
+              </h2>
 
-                <form onSubmit={handleSearch}>
-                  <input
-                    type="search"
-                    placeholder="pesquisar por mais podcats"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  <button type="submit">
-                    <MagnifyingGlass size={20} color="#fff" />
-                  </button>
-                </form>
+              <form onSubmit={handleSearch}>
+                <input
+                  type="search"
+                  placeholder="pesquisar por mais podcats"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <button type="submit">
+                  <MagnifyingGlass size={20} color="#fff" />
+                </button>
+              </form>
             </div>
 
             <ul>
               {latestEpisodes.map((latestEpisode, index) => (
-                <li key={latestEpisode.id} style={{background: `${themes === 'dark' ? 'rgb(13, 13, 13)' : '#aeaeb0'}`}}>
+                <li
+                  key={latestEpisode.id}
+                  style={{
+                    background: `${
+                      themes === "dark" ? "rgb(13, 13, 13)" : "#aeaeb0"
+                    }`,
+                  }}
+                >
                   <Image
                     width={192}
                     height={192}
@@ -99,8 +112,17 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                     alt={latestEpisode.title}
                   />
 
-                  <div style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>
-                    <Link href={`/episodes/${latestEpisode.id}`} style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>
+                  <div
+                    style={{
+                      color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
+                    }}
+                  >
+                    <Link
+                      href={`/episodes/${latestEpisode.id}`}
+                      style={{
+                        color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
+                      }}
+                    >
                       {latestEpisode.title}
                     </Link>
                     <p>{latestEpisode.members}</p>
@@ -109,9 +131,11 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                       {latestEpisode.durationAsString}
                     </span>
                   </div>
-                  
+
                   <button
-                  style={{background: `${themes === "dark" ? "#131313" : "#eee"}`}}
+                    style={{
+                      background: `${themes === "dark" ? "#131313" : "#eee"}`,
+                    }}
                     onClick={() => playList(episodeList, index)}
                     type="button"
                   >
@@ -123,7 +147,11 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
           </LatestEpisodeContainer>
 
           <AllEpisodeContainer>
-            <h2 style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>Todos episódios</h2>
+            <h2
+              style={{ color: `${themes === "dark" ? "#aeaeb0" : "#131313"}` }}
+            >
+              Todos episódios
+            </h2>
             {results.length > 0 ? (
               <SearchResults
                 results={results}
@@ -133,7 +161,11 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
             ) : (
               <table cellSpacing={0}>
                 <thead>
-                  <tr style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>
+                  <tr
+                    style={{
+                      color: `${themes === "dark" ? "#aeaeb0" : "#131313"}`,
+                    }}
+                  >
                     <th></th>
                     <th>PODCAST</th>
                     <th>INTEGRANTES</th>
@@ -156,16 +188,52 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                           />
                         </td>
                         <td>
-                          <Link href={`/episodes/${episode.id}`} style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>
+                          <Link
+                            href={`/episodes/${episode.id}`}
+                            style={{
+                              color: `${
+                                themes === "dark" ? "#aeaeb0" : "#131313"
+                              }`,
+                            }}
+                          >
                             {episode.title}
                           </Link>
                         </td>
-                        <td style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>{episode.members}</td>
-                        <td className="published" style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>{episode.publishedAt}</td>
-                        <td style={{ color: `${themes === 'dark' ? '#aeaeb0' : '#131313'}`}}>{episode.durationAsString}</td>
+                        <td
+                          style={{
+                            color: `${
+                              themes === "dark" ? "#aeaeb0" : "#131313"
+                            }`,
+                          }}
+                        >
+                          {episode.members}
+                        </td>
+                        <td
+                          className="published"
+                          style={{
+                            color: `${
+                              themes === "dark" ? "#aeaeb0" : "#131313"
+                            }`,
+                          }}
+                        >
+                          {episode.publishedAt}
+                        </td>
+                        <td
+                          style={{
+                            color: `${
+                              themes === "dark" ? "#aeaeb0" : "#131313"
+                            }`,
+                          }}
+                        >
+                          {episode.durationAsString}
+                        </td>
                         <td>
                           <button
-                          style={{background: `${themes === "dark" ? "#131313" : "#eee"}`}}
+                            style={{
+                              background: `${
+                                themes === "dark" ? "#131313" : "#eee"
+                              }`,
+                            }}
                             onClick={() =>
                               playList(
                                 episodeList,

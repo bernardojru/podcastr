@@ -37,6 +37,8 @@ export const {
       blue200: '#5659EB',
       blue300: '#4347FE',
       blue400: '#3846D4',
+
+      error: "#d15151",
     },
 
     lineHeights: {

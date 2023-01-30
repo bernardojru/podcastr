@@ -5,6 +5,8 @@ export const light = createTheme({
     primary: "#eee",
     color: "#4347FE",
     transparent: "#eee",
-    text: "#000"
+    text: "#000",
+    gray500: "#505059",
+   
   },
 });

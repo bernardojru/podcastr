@@ -10,14 +10,7 @@ import { Login } from "../components/login";
 import { useState } from "react";
 
 export default function Home() {
-  const [previewImg, setPreviewImg] = useState();
   const { themes } = useThemes();
-
-  function handleFile(e: any) {
-    const image = e.target.files[0];
-
-    setPreviewImg(image);
-  }
   return (
     <>
       <Head>
@@ -33,12 +26,6 @@ export default function Home() {
             <ToggleThemesButton />
           </nav>
         </header>
-        {/* AQUI AQUI AQUI UPLOAD DE IMAGEM */}
-        <div>
-          <img src={previewImg && URL.createObjectURL(previewImg)} alt="" />
-          <h1>Aqui</h1>
-          <input type="file" onChange={handleFile} />
-        </div>
 
         <section>
           <span>Podcast Application</span>

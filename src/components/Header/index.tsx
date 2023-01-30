@@ -6,46 +6,54 @@ import {
 } from "./styles";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useThemes } from "../../hooks/useThemes";
+import { prisma } from "../../lib/prisma";
 
 import { ToggleThemesButton } from "../ToggleThemesButton";
 import { ArrowLeft } from "phosphor-react";
+import axios from "axios";
+import { string } from "zod/lib";
+
+interface User {
+  name: string;
+  password: string;
+  email: string;
+  img: string;
+}
 
 export function Header() {
   const { themes } = useThemes();
+  const [user, setUser] = useState<User | any>("");
+  
 
   const [isOpen, setIsOpen] = useState(false);
 
   function openExitButton() {
     setIsOpen(!isOpen);
   }
-  // console.log(session?.user?.image)
+
+  // link=https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
 
   return (
-    <HeaderContainer
-      style={{
-        background: `${themes === "dark" ? "rgb(13, 13, 13)" : "#f7f7f7"}`,
-        borderBottom: `${
-          themes === "dark" ? "1px solid rgb(32, 35, 39)" : "1px solid #999"
-        }`,
-      }}
-    >
+    <HeaderContainer className={themes}>
       <img src="/logo-light.svg" alt="Podcastr" />
 
       <>
         <Navigation>
           <div>
+            {/* AQUI AQUI AQUI UPLOAD DE IMAGEM */}
+            
+            {/* Termina aqui */}
             <button onClick={openExitButton}>
               <img
                 src="https://github.com/bernardojru.png"
                 alt="foto de perfil"
               />
-              <strong>bernardo</strong>
+              {/* <strong>{user.name}</strong> */}
             </button>
 
-            {/* 'transform: "translateY(60px)"' */}
             <DetailsProfile
               style={{
                 transform: `${
@@ -59,19 +67,10 @@ export function Header() {
           </div>
         </Navigation>
       </>
-      <EndContent>
-        <Link
-          href="/"
-          style={{
-            background: `${themes === "dark" ? "#131313" : "#aeaeb0"}`,
-            color: `${themes === "dark" ? "white" : "#131313"}`,
-          }}
-        >
-          <ArrowLeft size={25} />
-          voltar
-        </Link>
-        <ToggleThemesButton />
+      <EndContent href="/">
+        <ArrowLeft size={25} />
       </EndContent>
+      <ToggleThemesButton />
     </HeaderContainer>
   );
 }

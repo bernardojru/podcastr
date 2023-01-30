@@ -5,7 +5,10 @@ export const dark = createTheme({
     primary: "#131313",
     color: " #04D361",
     transparent: "rgba(19, 19, 19, 0.4)",
-    text: "#fff"
+    text: "#fff",
+    gray500: "#505059",
+    gray900: "#121214",
+    gray200: '#A9A9B2',
   },
 });
 
