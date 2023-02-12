@@ -9,8 +9,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Login } from "../components/login";
 import { useState } from "react";
 
+// import f from ''
+
+// REPRODUZIR AUDIO NÃO DEU CERTO JÁ TENTEI DE TUDO
+
 export default function Home() {
   const { themes } = useThemes();
+
   return (
     <>
       <Head>
@@ -29,7 +34,7 @@ export default function Home() {
 
         <section>
           <span>Podcast Application</span>
-          <h1>Podcastr</h1>
+          <h1>Tech podcast</h1>
           <p>
             Uma plataforma construída para transmissão de podcasts sobre a área
             de desenvolvimento de softwares.
@@ -57,3 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
+{/* <audio id="myAudio" controls>
+  <source src="/audios/Faladev30.mp3" type="audio/mpeg" />O falaDev30 já
+  funciona.
+</audio>; */}

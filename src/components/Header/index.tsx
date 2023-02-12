@@ -1,7 +1,9 @@
 import {
   HeaderContainer,
-  Navigation,
-  DetailsProfile,
+  PopoverRootNav,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverPortal,
   EndContent,
 } from "./styles";
 
@@ -15,6 +17,7 @@ import { ToggleThemesButton } from "../ToggleThemesButton";
 import { ArrowLeft } from "phosphor-react";
 import axios from "axios";
 import { string } from "zod/lib";
+import { Avatar } from "../Avatar";
 
 interface User {
   name: string;
@@ -46,39 +49,29 @@ export function Header() {
 
   return (
     <HeaderContainer className={themes}>
-      <img src="/logo-light.svg" alt="Podcastr" />
+      <div>
+        <img src="/logo-light.svg" alt="Podcastr" />
 
-      <>
-        <Navigation>
-          <div>
-            {/* AQUI AQUI AQUI UPLOAD DE IMAGEM */}
-
-            {/* Termina aqui */}
+        <PopoverRootNav>
+          <PopoverTrigger asChild>
             <button onClick={openExitButton}>
-              <img
-                src="https://github.com/bernardojru.png"
-                alt="foto de perfil"
-              />
-              {/* <strong>{user.name}</strong> */}
+              <Avatar />
+              <strong>bernardo gomes josé</strong>
             </button>
-
-            <DetailsProfile
-              style={{
-                transform: `${
-                  !isOpen ? "translateY(80px)" : "translateY(60px)"
-                } `,
-                opacity: `${!isOpen ? "0" : "1"}`,
-              }}
-            >
-              <button>Sair</button>
-            </DetailsProfile>
-          </div>
-        </Navigation>
-      </>
-      <EndContent href="/">
-        <ArrowLeft size={25} />
-      </EndContent>
-      <ToggleThemesButton />
+          </PopoverTrigger>
+          <PopoverPortal>
+            <PopoverContent>
+              <button>sair</button>
+            </PopoverContent>
+          </PopoverPortal>
+        </PopoverRootNav>
+      </div>
+      <div>
+        <EndContent href="/">
+          <ArrowLeft size={25} />
+        </EndContent>
+        <ToggleThemesButton />
+      </div>
     </HeaderContainer>
   );
 }

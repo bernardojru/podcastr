@@ -15,8 +15,6 @@ model User {
   name     String
   password String
   email    String @unique
-  image    String 
 
   @@map("users")
 }
-// git commit -m "manutentions: login in process and dark theme complete"

@@ -4,9 +4,20 @@ import { styled } from "../../styles/.";
 export const AvatarContainer = styled(Avatar.Root, {
   borderRadius: "99999px",
   display: "inline-block",
-  width: "5rem",
-  height: "5rem",
   overflow: "hidden",
+
+  variants: {
+    size: {
+      xl: {
+        width: "2.7rem",
+        height: "2.7rem",
+      },
+      lg: {
+        width: "2rem",
+        height: "2rem",
+      },
+    },
+  },
 });
 
 export const AvatarImage = styled(Avatar.Image, {
@@ -26,12 +37,8 @@ export const AvatarFallback = styled(Avatar.Fallback, {
   color: "#202024",
 
   svg: {
-    width: "2rem",
-    height: "2rem",
+    width: "1rem",
+    height: "1rem",
     color: '$gray100',
-  },
-  img: {
-    width: "8rem",
-    height: "8rem",
   },
 });

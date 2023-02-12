@@ -121,7 +121,7 @@ export const LatestEpisodeContainer = styled("section", {
 
           "&:hover": {
             transition: "all .2s ease-in-out",
-            color: "#fff",
+            color: "#eee",
             textDecoration: "underline",
           },
         },
@@ -232,7 +232,7 @@ export const AllEpisodeContainer = styled("section", {
 
             "&:hover": {
               transition: "all .2s ease-in-out",
-              color: "#fff",
+              color: "gray",
               textDecoration: "underline",
             },
           },

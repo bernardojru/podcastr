@@ -1,4 +1,3 @@
-import { type } from "os";
 import { createContext, ReactNode, useState } from "react";
 import { dark } from "../styles/themes/dark";
 import { light } from "../styles/themes/light";

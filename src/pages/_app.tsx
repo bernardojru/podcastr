@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { Player } from "../components/Player";
 import { PlayerContextProvider } from "../contexts/PlayerContext";
 import { ThemeContextProvider } from "../contexts/ThemeContext";
+import { AvatarContextProvider } from "../contexts/AvatarContext";
 
 globalStyles();
 
@@ -12,7 +13,8 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-      <ThemeContextProvider>
+    <ThemeContextProvider>
+      <AvatarContextProvider>
         <PlayerContextProvider>
           <Container>
             <main>
@@ -21,7 +23,8 @@ export default function App({
             <Player />
           </Container>
         </PlayerContextProvider>
-      </ThemeContextProvider>
+      </AvatarContextProvider>
+    </ThemeContextProvider>
   );
 }
 // acessar o : https://stitches.dev/docs/variants

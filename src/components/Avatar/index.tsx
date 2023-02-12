@@ -1,15 +1,13 @@
 import { AvatarContainer, AvatarImage, AvatarFallback } from "./styles";
 import { User } from "phosphor-react";
+import { useAvatar } from "../../hooks/useAvatart";
 
-interface AvatarProps {
-  previewImg: any;
-}
 
-export function Avatar({ previewImg }: AvatarProps) {
-  // console.log(previewImg, 'Do avatar')
-  // console.log(URL.createObjectURL(previewImg))
+export function Avatar() {
+  const { previewImg } = useAvatar();
+
   return (
-    <AvatarContainer>
+    <AvatarContainer size='xl'>
       <AvatarImage />
       <AvatarFallback delayMs={600}>
         {previewImg ? (

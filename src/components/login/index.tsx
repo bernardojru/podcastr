@@ -9,6 +9,7 @@ import axios, { AxiosError } from "axios";
 import { Avatar } from "../Avatar";
 import { useState } from "react";
 import { useThemes } from "../../hooks/useThemes";
+import { useAvatar } from "../../hooks/useAvatart";
 
 const registerFormChema = z.object({
   name: z
@@ -16,7 +17,6 @@ const registerFormChema = z.object({
     .min(3, { message: "O nome precisa ter pelo menos 4 letras" }),
   email: z.string().min(4, { message: "O email precisa ser válido" }),
   password: z.string().min(5, { message: "A senha precisa ser forte" }),
-  image: z.any(),
 });
 
 type RegisterFormData = z.infer<typeof registerFormChema>;
@@ -29,15 +29,8 @@ export function Login() {
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormChema),
   });
-  const [previewImg, setPreviewImg] = useState();
   const { themes } = useThemes();
-
-  function handleFile(e: any) {
-    const image = e.target.files[0];
-
-    console.log(URL.createObjectURL(image), 'aquiiiiiiiiiiiiiiiiiiiii')
-    setPreviewImg(image);
-  }
+  const { previewImg, handleFile } = useAvatar();
 
   const router = useRouter();
 
@@ -47,9 +40,8 @@ export function Login() {
         name: data.name,
         email: data.email,
         password: data.password,
-        image: data.image,
       });
-      console.log(data)
+      console.log(data);
       await router.push("/podcast");
     } catch (error) {
       if (error instanceof AxiosError && error?.response?.data?.message) {
@@ -69,7 +61,7 @@ export function Login() {
             <X size={15} weight="bold" />
           </CloseButton>
         </header>
-        <Avatar previewImg={previewImg} />
+        <Avatar />
         <form onSubmit={handleSubmit(handleRegister)}>
           <span>
             <User size={20} weight="light" /> <strong>Nome:</strong>
@@ -105,7 +97,7 @@ export function Login() {
           <span>
             <Upload size={20} weight="light" /> <strong>Imagem:</strong>
           </span>
-          <input type="file" {...register("image")} onChange={handleFile} />
+          <input type="file" onChange={handleFile} />
 
           <button type="submit" disabled={isSubmitting}>
             Entrar Online
