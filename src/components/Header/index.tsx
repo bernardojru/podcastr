@@ -18,35 +18,36 @@ import { ArrowLeft } from "phosphor-react";
 import axios from "axios";
 import { string } from "zod/lib";
 import { Avatar } from "../Avatar";
+import { api, server } from "../../lib/axios";
 
 interface User {
+  id: string
   name: string;
   password: string;
   email: string;
-  img: string;
 }
 
 export function Header() {
   const { themes } = useThemes();
-  const [user, setUser] = useState<User | any>("");
+  const [user, setUser] = useState<User | null>(null);
 
-  // async function get() {
-  //   const queryUser = await prisma.user.findUnique({
-  //     where: {
-  //       email: 'iecie@gamil.com'
-  //     },
-  //   });
+  async function handleGetUserInfo () {
+    const {data} = await server.get('/api/')
 
-  // }
+    setUser(data)
+    console.log(data, 'aquiiiiiiiiiiiiiii!')
+  }
+
+  useEffect(() => {
+    handleGetUserInfo()
+  }, []) 
 
   const [isOpen, setIsOpen] = useState(false);
 
   function openExitButton() {
     setIsOpen(!isOpen);
   }
-
-  // link=https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
-
+  
   return (
     <HeaderContainer className={themes}>
       <div>
@@ -56,7 +57,7 @@ export function Header() {
           <PopoverTrigger asChild>
             <button onClick={openExitButton}>
               <Avatar />
-              <strong>bernardo gomes josé</strong>
+              <strong>{user?.name}</strong>
             </button>
           </PopoverTrigger>
           <PopoverPortal>

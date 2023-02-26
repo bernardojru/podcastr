@@ -1,36 +1,34 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../lib/prisma";
+import { z } from "zod";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).end();
-  }
+  if (req.method === "POST") {
+    const { name, password, email } = req.body;
 
-  const { name, password, email, image } = req.body
-
-  const userExists = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-  });
-
-  if (userExists) {
-    return res.status(400).json({
-      message: "Username already token",
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password,
+      },
     });
+
+    return res.status(200).json({ data: user });
   }
+  if (req.method === "GET") {
+    const name = String(req.query.name);
 
-  const user = await prisma.user.create({
-    data: {
-      name,
-      email,
-      password,
-      image,
-    },
-  });
+    const user = await prisma.user.findUnique({
+      where: {
+        name,
+      },
+    });
+    console.log(user, "err0 do terminal");
 
-  return res.status(201).json(user);
+    return res.json({ user });
+  }
 }

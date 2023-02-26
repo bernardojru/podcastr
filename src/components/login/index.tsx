@@ -10,6 +10,7 @@ import { Avatar } from "../Avatar";
 import { useState } from "react";
 import { useThemes } from "../../hooks/useThemes";
 import { useAvatar } from "../../hooks/useAvatart";
+import { server } from "../../lib/axios";
 
 const registerFormChema = z.object({
   name: z
@@ -35,14 +36,15 @@ export function Login() {
   const router = useRouter();
 
   async function handleRegister(data: RegisterFormData) {
+    const { name } = data;
     try {
-      await axios.post("/api/", {
+      await server.post("/api/", {
         name: data.name,
         email: data.email,
         password: data.password,
       });
-      console.log(data);
-      await router.push("/podcast");
+
+      await router.push(`/podcast?name=${name}`);
     } catch (error) {
       if (error instanceof AxiosError && error?.response?.data?.message) {
         alert(error.response.data.message);
