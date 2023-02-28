@@ -39,9 +39,9 @@ export const PopoverTrigger = styled(Popover.Trigger, {
   alignItems: "center",
   justifyContent: "center",
   gap: '$2',
-  color: "#fff",
-  background: '#131313',
-  border: "1px solid $gray500",
+  color: "#131313",
+  // background: '#131313',
+  // border: "1px solid $gray500",
   borderRadius: "9999px",
   padding: '$2',
 

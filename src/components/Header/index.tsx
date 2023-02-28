@@ -16,7 +16,7 @@ import { prisma } from "../../lib/prisma";
 import { ToggleThemesButton } from "../ToggleThemesButton";
 import { ArrowLeft } from "phosphor-react";
 import axios from "axios";
-import { string, z } from "zod/lib";
+import { z } from "zod";
 import { Avatar } from "../Avatar";
 import { api, server } from "../../lib/axios";
 
@@ -70,7 +70,7 @@ export function Header() {
           <PopoverTrigger asChild>
             <button onClick={openExitButton}>
               <Avatar />
-              <strong>{user?.name}</strong>
+              <strong>Bernardo Gomes josé</strong>
             </button>
           </PopoverTrigger>
           <PopoverPortal>

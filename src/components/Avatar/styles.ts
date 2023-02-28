@@ -37,8 +37,8 @@ export const AvatarFallback = styled(Avatar.Fallback, {
   color: "#202024",
 
   svg: {
-    width: "1rem",
-    height: "1rem",
+    width: "5rem",
+    height: "5rem",
     color: '$gray100',
   },
 });
