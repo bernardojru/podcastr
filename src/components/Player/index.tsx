@@ -6,11 +6,7 @@ import { PlayerButtons } from "./PlayerButtons";
 import { useState } from "react";
 
 export function Player() {
-  const [show, setShow] = useState(true);
-
-  function handleShowPlayer() {
-    setShow((state) => !state);
-  }
+  const {handleShowPlayer, show} = usePlayer()
   const { episodeList, currentEpisodeIndex } = usePlayer();
 
   const episode = episodeList[currentEpisodeIndex];

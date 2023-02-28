@@ -12,7 +12,10 @@ export const dark = createTheme({
     h2: '#aeaeb0',
     li: 'rgb(13, 13, 13)',
     border: '#222',
-    button: '#eee'
+    button: '#eee',
+    avatar: '#131313',
+    colorAvatar: '#eee'
+
   },
 });
 

@@ -38,12 +38,12 @@ type nameType = z.infer<typeof nameChema>;
 export function Header() {
   const { themes } = useThemes();
   const [user, setUser] = useState<User | null>(null);
-  const [] = useState()
+  const [] = useState();
 
   async function handleGetUserInfo() {
     const { data } = await server.get("/api/", {
       params: {
-        name
+        name,
       },
     });
 
@@ -63,9 +63,8 @@ export function Header() {
 
   return (
     <HeaderContainer className={themes}>
+      <img src="/logo-light.svg" alt="Podcastr" />
       <div>
-        <img src="/logo-light.svg" alt="Podcastr" />
-
         <PopoverRootNav>
           <PopoverTrigger asChild>
             <button onClick={openExitButton}>
@@ -79,8 +78,6 @@ export function Header() {
             </PopoverContent>
           </PopoverPortal>
         </PopoverRootNav>
-      </div>
-      <div>
         <EndContent href="/">
           <ArrowLeft size={25} />
         </EndContent>

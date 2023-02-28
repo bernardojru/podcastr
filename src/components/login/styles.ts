@@ -49,7 +49,7 @@ export const LoginContainer = styled(Dialog.Content, {
       background: "$gray900",
       borderRadius: "$xs",
       border: "1px solid $gray700",
-      outline: 'none',
+      outline: "none",
       padding: "$2",
 
       "&:focus": {
@@ -106,11 +106,10 @@ export const CloseButton = styled(Dialog.Close, {
   },
 });
 
-
-export const MessageError = styled('span', {
-  color: '$error',
-  fontSize: '$sm'
-})
+export const MessageError = styled("span", {
+  color: "$error",
+  fontSize: "$sm",
+});
 
 const Load = keyframes({
   to: {

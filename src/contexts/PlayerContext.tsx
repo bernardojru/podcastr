@@ -22,7 +22,9 @@ interface PlayerContextData {
   toggleShuffling: () => void;
   playNext: () => void;
   playPrevious: () => void;
-  clearPlayerState: () => void
+  clearPlayerState: () => void;
+  handleShowPlayer: () => void;
+  show: boolean;
   hasNext: boolean;
   hasPrevious: boolean;
 }
@@ -41,17 +43,23 @@ export function PlayerContextProvider({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
+  const [show, setShow] = useState(true);
+
+  function handleShowPlayer() {
+    setShow((state) => !state);
+  }
 
   function play(episode: Episode) {
     setEpisodeList([episode]);
     setCurrentEpisodeIndex(0);
     setIsPlaying(true);
   }
-
+  
   function playList(list: Episode[], index: number) {
     setEpisodeList(list);
     setCurrentEpisodeIndex(index);
     setIsPlaying(true);
+    handleShowPlayer()
   }
 
   function togglePlay() {
@@ -90,14 +98,16 @@ export function PlayerContextProvider({
     setIsPlaying(state);
   }
 
-  function clearPlayerState () {
-    setEpisodeList([])
-    setCurrentEpisodeIndex(0)
+  function clearPlayerState() {
+    setEpisodeList([]);
+    setCurrentEpisodeIndex(0);
   }
 
   return (
     <PlayerContext.Provider
       value={{
+        show,
+        handleShowPlayer,
         episodeList,
         currentEpisodeIndex,
         isPlaying,
@@ -113,7 +123,7 @@ export function PlayerContextProvider({
         hasPrevious,
         toggleLoop,
         toggleShuffling,
-        clearPlayerState
+        clearPlayerState,
       }}
     >
       {children}

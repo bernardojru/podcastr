@@ -18,6 +18,7 @@ export const HeaderContainer = styled("header", {
   div: {
     display: "flex",
     alignItems: "center",
+    gap: '$10'
   },
 
   a: {
@@ -39,13 +40,11 @@ export const PopoverTrigger = styled(Popover.Trigger, {
   alignItems: "center",
   justifyContent: "center",
   gap: '$2',
-  color: "#131313",
-  // background: '#131313',
-  // border: "1px solid $gray500",
+  color: "$colorAvatar",
+  background: '$avatar',
   borderRadius: "9999px",
   padding: '$2',
 
-  marginLeft: "2rem",
 
   "> button": {
     height: "4rem",
@@ -99,10 +98,10 @@ export const EndContent = styled(Link, {
   background: "$gray500",
   borderRadius: "$lg",
   height: "2rem",
-  width: "4rem",
+  width: "2rem",
 
   color: "white",
 
   textDecoration: "none",
-  marginRight: "$5",
+  // marginRight: "$5",
 });

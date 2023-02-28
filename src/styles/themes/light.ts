@@ -11,5 +11,8 @@ export const light = createTheme({
     li: "#aeaeb0",
     border: '#E1E1E6',
     button: '#131313',
+    avatar: '#eee',
+    colorAvatar: '#131313',
+
   },
 });
