@@ -3,17 +3,15 @@ import Image from "next/image";
 import { usePlayer } from "../../contexts/PlayerContext";
 import { PlayerButtons } from "./PlayerButtons";
 
-import { useState } from "react";
-
 export function Player() {
-  const {handleShowPlayer, show} = usePlayer()
+  const { handleShowPlayer, show } = usePlayer();
   const { episodeList, currentEpisodeIndex } = usePlayer();
 
   const episode = episodeList[currentEpisodeIndex];
 
   return (
     <PlayerContainer
-      style={{transform: `translateX(${show ? '100%' : '0%'})`}}
+      style={{ transform: `translateX(${show ? "100%" : "0%"})` }}
     >
       <ShowButton onClick={handleShowPlayer} />
       <header>

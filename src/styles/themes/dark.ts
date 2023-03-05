@@ -14,8 +14,10 @@ export const dark = createTheme({
     border: '#222',
     button: '#eee',
     avatar: '#131313',
-    colorAvatar: '#eee'
-
+    colorAvatar: '#eee',
+    gray600: "#323238",
+    gray800: "#202024",
+    bg: '#505059'
   },
 });
 

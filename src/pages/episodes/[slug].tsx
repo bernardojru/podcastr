@@ -51,7 +51,7 @@ export default function Episode({ episode }: EpisodeProps) {
           style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
         >
           <ThumbnailContainer>
-            <Link href="/podcast">
+            <Link href="/premium">
               <button type="button">
                 <img src="/arrow-left.svg" alt="Voltar" />
               </button>

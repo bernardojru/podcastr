@@ -5,6 +5,9 @@ import { Player } from "../components/Player";
 import { PlayerContextProvider } from "../contexts/PlayerContext";
 import { ThemeContextProvider } from "../contexts/ThemeContext";
 import { AvatarContextProvider } from "../contexts/AvatarContext";
+import { StepUpgradeContextProvider } from "../contexts/StepUpgradeContext";
+import { CheckoutContextProvider } from "../contexts/CheckoutContext";
+import { LoginContextProvider } from "../contexts/LoginContext";
 
 globalStyles();
 
@@ -14,17 +17,22 @@ export default function App({
 }: AppProps) {
   return (
     <ThemeContextProvider>
-      <AvatarContextProvider>
-        <PlayerContextProvider>
-          <Container>
-            <main>
-              <Component {...pageProps} />
-            </main>
-            <Player />
-          </Container>
-        </PlayerContextProvider>
-      </AvatarContextProvider>
+      <LoginContextProvider>
+        <CheckoutContextProvider>
+          <AvatarContextProvider>
+            <PlayerContextProvider>
+              <StepUpgradeContextProvider>
+                <Container>
+                  <main>
+                    <Component {...pageProps} />
+                  </main>
+                  <Player />
+                </Container>
+              </StepUpgradeContextProvider>
+            </PlayerContextProvider>
+          </AvatarContextProvider>
+        </CheckoutContextProvider>
+      </LoginContextProvider>
     </ThemeContextProvider>
   );
 }
-// acessar o : https://stitches.dev/docs/variants

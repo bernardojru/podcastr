@@ -1,7 +1,6 @@
 import {
   PodcastContainer,
   PodcastConst,
-  LatestEpisodeContainer,
   AllEpisodeContainer,
 } from "../styles/pages/podcast";
 import Head from "next/head";
@@ -11,15 +10,11 @@ import { api } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
 
 import { format, parseISO } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
 import Link from "next/link";
 import { usePlayer } from "../contexts/PlayerContext";
 import { useThemes } from "../hooks/useThemes";
-import { MagnifyingGlass } from "phosphor-react";
 import { Header } from "../components/Header";
-import { Player } from "../components/Player";
-import { FormEvent, useState } from "react";
-import { SearchResults } from "../components/SearchResults";
+import { ptBR } from "date-fns/locale";
 
 interface Episodes {
   id: string;
@@ -40,27 +35,8 @@ interface PodcastProps {
 export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
   const { playList } = usePlayer();
   const { themes } = useThemes();
-  const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
-
-  const currentDate = format(new Date(), "EEEEEE, d MMMM", {
-    locale: ptBR,
-  });
-
-  async function handleSearch(e: FormEvent) {
-    e.preventDefault();
-
-    if (!search.trim()) {
-      return;
-    }
-
-    const response = await fetch(`http://localhost:5000/episodes?q=${search}`);
-    const data = await response.json();
-
-    setResults(data);
-  }
 
   return (
     <>
@@ -70,133 +46,60 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
       <Header />
       <PodcastContainer className={themes}>
         <PodcastConst>
-          <LatestEpisodeContainer>
-            <div>
-              <h2>Últimos lançamentos</h2>
-
-              <form onSubmit={handleSearch}>
-                <input
-                  type="search"
-                  placeholder="pesquisar por mais podcats"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button type="submit">
-                  <MagnifyingGlass size={20} color="#fff" />
-                </button>
-              </form>
-            </div>
-
-            <ul>
-              {latestEpisodes.map((latestEpisode, index) => (
-                <li key={latestEpisode.id}>
-                  <Image
-                    width={192}
-                    height={192}
-                    src={latestEpisode.thumbnail}
-                    alt={latestEpisode.title}
-                  />
-
-                  <div>
-                    <Link href={`/episodes/${latestEpisode.id}`}>
-                      {latestEpisode.title}
-                    </Link>
-                    <p>{latestEpisode.members}</p>
-                    <span>
-                      {latestEpisode.publishedAt},{" "}
-                      {latestEpisode.durationAsString}
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={() => playList(episodeList, index)}
-                    type="button"
-                  >
-                    <img src="/play-green.svg" alt="" />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </LatestEpisodeContainer>
-
           <AllEpisodeContainer>
             <h2>Todos episódios</h2>
-            {results.length > 0 ? (
-              <SearchResults
-                results={results}
-                allEpisodes={allEpisodes}
-                latestEpisodes={latestEpisodes}
-              />
-            ) : (
-              <table cellSpacing={0}>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>PODCAST</th>
-                    <th>INTEGRANTES</th>
-                    <th>DATA</th>
-                    <th>DURAÇÃO</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allEpisodes.map((episode, index) => (
-                    <>
-                      <div />
-                      <tr key={episode.id}>
-                        <td>
-                          <Image
-                            width={120}
-                            height={120}
-                            src={episode.thumbnail}
-                            alt={episode.title}
-                          />
-                        </td>
-                        <td>
-                          <Link href={`/episodes/${episode.id}`}>
-                            {episode.title}
-                          </Link>
-                        </td>
-                        <td
-                          
+            <table cellSpacing={0}>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>PODCAST</th>
+                  <th>INTEGRANTES</th>
+                  <th>DATA</th>
+                  <th>DURAÇÃO</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {allEpisodes.map((episode, index) => (
+                  <>
+                    <div />
+                    <tr key={episode.id}>
+                      <td>
+                        <Image
+                          width={120}
+                          height={120}
+                          src={episode.thumbnail}
+                          alt={episode.title}
+                        />
+                      </td>
+                      <td>
+                        <Link href={`/episodes/${episode.id}`}>
+                          {episode.title}
+                        </Link>
+                      </td>
+                      <td>{episode.members}</td>
+                      <td className="published">{episode.publishedAt}</td>
+                      <td>{episode.durationAsString}</td>
+                      <td>
+                        <button
+                          style={{
+                            background: `${
+                              themes === "dark" ? "#131313" : "#eee"
+                            }`,
+                          }}
+                          onClick={() =>
+                            playList(episodeList, index + latestEpisodes.length)
+                          }
+                          type="button"
                         >
-                          {episode.members}
-                        </td>
-                        <td
-                          className="published"
-                          
-                        >
-                          {episode.publishedAt}
-                        </td>
-                        <td
-                          
-                        >
-                          {episode.durationAsString}
-                        </td>
-                        <td>
-                          <button
-                            style={{
-                              background: `${
-                                themes === "dark" ? "#131313" : "#eee"
-                              }`,
-                            }}
-                            onClick={() =>
-                              playList(
-                                episodeList,
-                                index + latestEpisodes.length
-                              )
-                            }
-                            type="button"
-                          >
-                            <img src="/play-green.svg" alt="Tocar episódio" />
-                          </button>
-                        </td>
-                      </tr>
-                    </>
-                  ))}
-                </tbody>
-              </table>
-            )}
+                          <img src="/play-green.svg" alt="Tocar episódio" />
+                        </button>
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
+            </table>
           </AllEpisodeContainer>
         </PodcastConst>
       </PodcastContainer>

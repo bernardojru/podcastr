@@ -7,7 +7,6 @@ export const HomeContainer = styled("main", {
 
   transition: "all .3s ease-in-out",
 
-  // background: "url(/images/blur.svg) no-repeat ",
   backgroundSize: "100vw",
   backgroundPositionY: "top",
   backgroundAttachment: "local",
@@ -65,13 +64,13 @@ export const HomeContainer = styled("main", {
     h1: {
       fontSize: "3rem",
       fontWeight: 700,
-      color: "$gray500",
+      color: "$text",
     },
     p: {
       textAlign: "center",
       fontSize: "1.4rem",
       lineHeight: "2.6rem",
-      color: "rgb(128, 128, 128)",
+      color: "$text",
     },
 
     img: {

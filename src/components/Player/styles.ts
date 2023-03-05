@@ -2,7 +2,7 @@ import { styled } from "../../styles/.";
 
 export const PlayerContainer = styled("div", {
   padding: "2rem 4rem",
-  transition: 'all .4s ease-in-out',
+  transition: "all .4s ease-in-out",
 
   width: "15rem",
   height: "100vh",
@@ -29,7 +29,6 @@ export const PlayerContainer = styled("div", {
       fontSize: ".8rem",
     },
   },
-
 });
 
 export const ShowButton = styled("button", {
@@ -59,8 +58,6 @@ export const PlayerInfo = styled("div", {
 
   "> strong": {
     display: "block",
-
-    // marginTop: "2rem",
 
     fontSize: "1rem",
     fontWeight: "600",

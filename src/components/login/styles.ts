@@ -1,23 +1,19 @@
 import { keyframes, styled } from "../../styles/.";
-import * as Dialog from "@radix-ui/react-dialog";
 import { CircleNotch } from "phosphor-react";
 
-export const LoginContainer = styled(Dialog.Content, {
-  minWidth: "27rem",
+export const LoginContainer = styled("div", {
+  minWidth: "38rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   fontFamily: "$default",
-  border: "solid 1px $blue200",
   padding: "$5",
-  borderRadius: "$lg",
-  background: "$gray900",
+  borderRadius: "$md",
+  border: "solid 1px $gray600",
+  background: "$gray800",
   color: "$gray200",
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  margin: "$5",
 
   "@media(max-width:375px)": {
     minWidth: "20rem",
@@ -37,24 +33,25 @@ export const LoginContainer = styled(Dialog.Content, {
     padding: "$5",
     width: "100%",
 
-    span: {
+    '> span': {
       display: "flex",
       gap: "$3",
       alignItems: "center",
+      color: "$text",
     },
 
     input: {
-      color: "$white",
+      color: "$text",
       height: "1.5rem",
-      background: "$gray900",
+      background: "$gray800",
       borderRadius: "$xs",
-      border: "1px solid $gray700",
+      border: "1px solid $gray900",
       outline: "none",
       padding: "$2",
 
       "&:focus": {
-        border: "1px solid $blue200",
-        transition: "all .2s ease-in-out",
+        border: "2px solid $green500",
+        transition: "all .1s ease-in-out",
       },
 
       "&::placeholder": {
@@ -63,25 +60,12 @@ export const LoginContainer = styled(Dialog.Content, {
     },
 
     button: {
-      width: "100%",
-      padding: "$2",
-      height: "2.5rem",
-      background: "$blue200",
-      color: "$white",
-      fontWeight: "800",
-      borderRadius: "$xs",
-      textTransform: "uppercase",
-      cursor: "pointer",
-
-      "&:hover": {
-        background: "$blue100",
-        transition: "all .2s ease-in-out",
-      },
+      fontWeight: '$bold',
     },
   },
 });
 
-export const Overlay = styled(Dialog.Overlay, {
+export const Overlay = styled("div", {
   position: "fixed",
   width: "100vw",
   height: "100vh",
@@ -89,7 +73,7 @@ export const Overlay = styled(Dialog.Overlay, {
   background: "$transparent",
 });
 
-export const CloseButton = styled(Dialog.Close, {
+export const CloseButton = styled("div", {
   background: "transparent",
   borderRadius: "$xs",
   display: "flex",
@@ -106,7 +90,7 @@ export const CloseButton = styled(Dialog.Close, {
   },
 });
 
-export const MessageError = styled("span", {
+export const MessageError = styled("strong", {
   color: "$error",
   fontSize: "$sm",
 });

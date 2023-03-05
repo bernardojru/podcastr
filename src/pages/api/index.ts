@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../lib/prisma";
-import { z } from "zod";
 
 export default async function handler(
   req: NextApiRequest,
@@ -27,7 +26,7 @@ export default async function handler(
         name,
       },
     });
-    console.log(user, "err0 do terminal");
+    console.log(user, "user do terminal");
 
     return res.json({ user });
   }

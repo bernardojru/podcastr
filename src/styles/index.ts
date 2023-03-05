@@ -26,7 +26,7 @@ export const {
 
       blue500: "rgb(67, 71, 254);",
 
-      green500: " #04D361",
+      green500: " #00875F",
 
       gray100: "#E1E1E6",
       gray200: "#A9A9B2",
@@ -104,11 +104,5 @@ export const {
     fonts: {
       default: "Roboto, sans-serif",
     },
-  },
-
-  media: {
-    bp1: "(min-width: 640px)",
-    bp2: "(min-width: 768px)",
-    bp3: "(min-width: 1024px)",
   },
 });
