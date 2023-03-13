@@ -37,7 +37,7 @@ export function HeaderPremium() {
   const { themes } = useThemes();
   const { showItem } = useCheckout();
   const [user, setUser] = useState<User | null>(null);
-  const { handleFile } = useAvatar();
+  const { handleFile, deleteFile } = useAvatar();
   const { saveName, setSaveName, deleteStorage } = useLogin();
 
   const name = "Bernardo José";
@@ -74,10 +74,12 @@ export function HeaderPremium() {
       <img src="/logo-light.svg" alt="Podcastr" />
       <div>
         <>
+          {/* <button onClick={deleteFile}>sair aqui</button> */}
           <PopoverRootNav>
             <PopoverTrigger asChild>
               <button onClick={openExitButton}>
                 <Avatar />
+
                 <strong>{saveName}</strong>
               </button>
             </PopoverTrigger>

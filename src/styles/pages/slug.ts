@@ -1,10 +1,9 @@
 import { styled } from "../.";
 
-export const Container = styled('div', {
-  width: '100%',
-})
+export const Container = styled("div", {
+  width: "100%",
+});
 export const EpisodeContainer = styled("main", {
-  height: "calc(100vh - 6rem)",
   maxWidth: "45rem",
   padding: "3rem 2rem",
   margin: "0 auto",

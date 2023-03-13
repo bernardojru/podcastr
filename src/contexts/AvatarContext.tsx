@@ -4,6 +4,7 @@ interface AvatarContextType {
   previewImg: any;
   setPreviewImg: any;
   handleFile: (e: any) => void;
+  deleteFile: () => void;
 }
 
 interface AvatarContextProviderProps {
@@ -33,7 +34,9 @@ export function AvatarContextProvider({
   }
 
   return (
-    <AvatarContext.Provider value={{ previewImg, handleFile, setPreviewImg }}>
+    <AvatarContext.Provider
+      value={{ previewImg, handleFile, setPreviewImg, deleteFile }}
+    >
       {children}
     </AvatarContext.Provider>
   );

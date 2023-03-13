@@ -17,6 +17,8 @@ import { usePlayer } from "../../contexts/PlayerContext";
 import { Header } from "../../components/Header";
 import { useThemes } from "../../hooks/useThemes";
 import { dark } from "../../styles/themes/dark";
+import { Play, ArrowUUpLeft } from "phosphor-react";
+import { useLogin } from "../../contexts/LoginContext";
 
 type Episode = {
   id: string;
@@ -36,6 +38,7 @@ interface EpisodeProps {
 
 export default function Episode({ episode }: EpisodeProps) {
   const { themes } = useThemes();
+  const { saveName, setSaveName } = useLogin();
   const { play } = usePlayer();
 
   return (
@@ -51,11 +54,19 @@ export default function Episode({ episode }: EpisodeProps) {
           style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
         >
           <ThumbnailContainer>
-            <Link href="/premium">
-              <button type="button">
-                <img src="/arrow-left.svg" alt="Voltar" />
-              </button>
-            </Link>
+            {saveName ? (
+              <Link href="/premium">
+                <button type="button">
+                  <ArrowUUpLeft size={20} color="white" weight="fill" />
+                </button>
+              </Link>
+            ) : (
+              <Link href="/podcast">
+                <button type="button">
+                  <ArrowUUpLeft size={20} color="white" weight="fill" />
+                </button>
+              </Link>
+            )}
             <Image
               width={700}
               height={160}
@@ -63,7 +74,7 @@ export default function Episode({ episode }: EpisodeProps) {
               alt={episode.title}
             />
             <button onClick={() => play(episode)} type="button">
-              <img src="/play.svg" alt="Tocar" />
+              <Play size={20} color="white" weight="fill" />
             </button>
           </ThumbnailContainer>
 

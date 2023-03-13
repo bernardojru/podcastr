@@ -15,6 +15,7 @@ import { usePlayer } from "../contexts/PlayerContext";
 import { useThemes } from "../hooks/useThemes";
 import { Header } from "../components/Header";
 import { ptBR } from "date-fns/locale";
+import { Play } from "phosphor-react";
 
 interface Episodes {
   id: string;
@@ -92,7 +93,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                           }
                           type="button"
                         >
-                          <img src="/play-green.svg" alt="Tocar episódio" />
+                          <Play size={15} color="green" weight="fill" />
                         </button>
                       </td>
                     </tr>

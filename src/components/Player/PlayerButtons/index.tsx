@@ -8,6 +8,7 @@ import "rc-slider/assets/index.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import { PlayerContext } from "../../../contexts/PlayerContext";
 import { convertDurationToTimeString } from "../../../utils/convertDurationToTimeString";
+import { Repeat, Shuffle, SkipBack, SkipForward } from "phosphor-react";
 
 interface Episode {
   title: string;
@@ -77,9 +78,7 @@ export function PlayerButtons({ episode }: PlayerButtons) {
   return (
     <PlayerButtonsContainer>
       <SliderContainer>
-        <span>
-          {convertDurationToTimeString(progress)}
-        </span>
+        <span>{convertDurationToTimeString(progress)}</span>
         <div className="slider">
           {episode ? (
             <Slider
@@ -94,9 +93,7 @@ export function PlayerButtons({ episode }: PlayerButtons) {
             <div className="empty"></div>
           )}
         </div>
-        <span>
-          {convertDurationToTimeString(episode?.duration ?? 0)}
-        </span>
+        <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
       </SliderContainer>
 
       {episode && (
@@ -118,10 +115,10 @@ export function PlayerButtons({ episode }: PlayerButtons) {
           disabled={!episode || episodeList.length === 1}
           onClick={toggleShuffling}
         >
-          <img
+          <Shuffle
+            size={23}
+            color="white"
             className={`${isShuffling && "isActive"}`}
-            src="/shuffle.svg"
-            alt="Embaralhar"
           />
         </button>
         <button
@@ -129,7 +126,7 @@ export function PlayerButtons({ episode }: PlayerButtons) {
           type="button"
           disabled={!episode || !hasPrevious}
         >
-          <img src="/play-previous.svg" alt="Tocar anterior" />
+          <SkipBack size={23} color="white" weight="fill" />
         </button>
         <button
           type="button"
@@ -148,13 +145,14 @@ export function PlayerButtons({ episode }: PlayerButtons) {
           type="button"
           disabled={!episode || !hasNext}
         >
-          <img src="/play-next.svg" alt="Tocar Próxima" />
+          <SkipForward size={23} color="white" weight="fill" />
         </button>
         <button type="button" disabled={!episode} onClick={toggleLoop}>
-          <img
+          <Repeat
+            size={23}
+            color="white"
+            weight="fill"
             className={`${isLooping && "isActive"}`}
-            src="/repeat.svg"
-            alt="Repetir"
           />
         </button>
       </ButtonsContainer>

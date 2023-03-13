@@ -19,6 +19,7 @@ import { MagnifyingGlass } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { SearchResults } from "../components/SearchResults";
 import { HeaderPremium } from "../components/HeaderPremium";
+import { Play } from "phosphor-react";
 
 interface Episodes {
   id: string;
@@ -111,7 +112,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                     onClick={() => playList(episodeList, index)}
                     type="button"
                   >
-                    <img src="/play-green.svg" alt="" />
+                    <Play size={15} color="green" weight="fill" />
                   </button>
                 </li>
               ))}
@@ -173,7 +174,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                             }
                             type="button"
                           >
-                            <img src="/play-green.svg" alt="Tocar episódio" />
+                            <Play size={15} color="green" weight="fill" />
                           </button>
                         </td>
                       </tr>
