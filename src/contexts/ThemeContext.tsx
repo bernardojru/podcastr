@@ -11,14 +11,13 @@ interface ThemeContextProviderProps {
   children: ReactNode;
 }
 
-
 export const ThemeContext = createContext({} as ThemeContextType);
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
-  const [themes, setThemes] = useState<any>(dark);
+  const [themes, setThemes] = useState<any>(light);
 
   function toggleThemes() {
-    setThemes(themes === dark ? light : dark);
+    setThemes(themes === light ? dark : light);
   }
 
   return (

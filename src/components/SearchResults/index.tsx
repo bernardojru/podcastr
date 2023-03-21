@@ -1,8 +1,9 @@
-import {SearchResultsContainer} from './styles'
+import { SearchResultsContainer } from "./styles";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePlayer } from "../../contexts/PlayerContext";
+import { Play } from "phosphor-react";
 
 interface Results {
   id: string;
@@ -24,12 +25,12 @@ interface SearchResultsProps {
 export function SearchResults({
   results,
   allEpisodes,
-  latestEpisodes
+  latestEpisodes,
 }: SearchResultsProps) {
   const { play } = usePlayer();
   return (
     <SearchResultsContainer>
-      {results.map((episode, index) => (
+      {results.map((episode, _index) => (
         <div key={episode.id}>
           <span>
             <Image
@@ -46,13 +47,8 @@ export function SearchResults({
           <span className="published">{episode.publishedAt}</span>
           <span>{episode.durationAsString}</span>
           <span>
-            <button
-              onClick={() =>
-                play(episode)
-              }
-              type="button"
-            >
-              <img src="/play-green.svg" alt="Tocar episódio" />
+            <button onClick={() => play(episode)} type="button">
+              <Play size={15} color="green" weight="fill" />
             </button>
           </span>
         </div>

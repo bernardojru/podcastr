@@ -54,12 +54,12 @@ export function PlayerContextProvider({
     setCurrentEpisodeIndex(0);
     setIsPlaying(true);
   }
-  
+
   function playList(list: Episode[], index: number) {
     setEpisodeList(list);
     setCurrentEpisodeIndex(index);
     setIsPlaying(true);
-    handleShowPlayer()
+    handleShowPlayer();
   }
 
   function togglePlay() {

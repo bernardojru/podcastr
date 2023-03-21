@@ -20,7 +20,7 @@ export function AvatarContextProvider({
 
   function handleFile(e: any) {
     const file = e.target.files[0];
-    const url = URL.createObjectURL(file);
+    const url: string = URL.createObjectURL(file);
 
     localStorage.setItem("image", url);
     if ("image" && url) {

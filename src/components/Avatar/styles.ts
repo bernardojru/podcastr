@@ -23,7 +23,6 @@ export const AvatarContainer = styled(Avatar.Root, {
 export const AvatarImage = styled(Avatar.Image, {
   width: "100%",
   height: "100%",
-  objectFit: "cover",
   borderRadius: "inherit",
 });
 
@@ -31,15 +30,16 @@ export const AvatarFallback = styled(Avatar.Fallback, {
   width: "100%",
   height: "100%",
   display: "flex",
+  objectFit: "cover",
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "$gray400",
   color: "$gray900",
 
   img: {
-    width: "100$",
+    width: "100%",
     height: "100%",
-    color: '$gray100',
-  objectFit: "cover",
+    color: "$gray100",
+    objectFit: "cover",
   },
 });

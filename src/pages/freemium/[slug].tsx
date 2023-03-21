@@ -19,6 +19,7 @@ import { useThemes } from "../../hooks/useThemes";
 import { dark } from "../../styles/themes/dark";
 import { Play, ArrowUUpLeft } from "phosphor-react";
 import { useLogin } from "../../contexts/LoginContext";
+import { HeaderPremium } from "../../components/HeaderPremium";
 
 type Episode = {
   id: string;
@@ -36,9 +37,9 @@ interface EpisodeProps {
   episode: Episode;
 }
 
-export default function Episode({ episode }: EpisodeProps) {
+export default function FreemiumEpisode({ episode }: EpisodeProps) {
   const { themes } = useThemes();
-  const { saveName, setSaveName } = useLogin();
+  const { saveName } = useLogin();
   const { play } = usePlayer();
 
   return (
@@ -46,7 +47,7 @@ export default function Episode({ episode }: EpisodeProps) {
       <Head>
         <title>{episode.title} | Podcastr</title>
       </Head>
-      <Header />
+      {saveName ? <HeaderPremium /> : <Header />}
       <Container
         style={{ background: `${themes === dark ? "#131313" : "#eee"}` }}
       >
@@ -54,19 +55,11 @@ export default function Episode({ episode }: EpisodeProps) {
           style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
         >
           <ThumbnailContainer>
-            {saveName ? (
-              <Link href="/premium">
-                <button type="button">
-                  <ArrowUUpLeft size={20} color="white" weight="fill" />
-                </button>
-              </Link>
-            ) : (
-              <Link href="/podcast">
-                <button type="button">
-                  <ArrowUUpLeft size={20} color="white" weight="fill" />
-                </button>
-              </Link>
-            )}
+            <Link href="/podcast">
+              <button type="button">
+                <ArrowUUpLeft size={20} color="white" weight="fill" />
+              </button>
+            </Link>
             <Image
               width={700}
               height={160}
@@ -105,7 +98,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug }: any = context.params;
 
-  const { data } = await api.get(`/episodes/${slug}`);
+  const { data } = await api.get(`/freemium/${slug}`);
 
   const episode = {
     id: data.id,

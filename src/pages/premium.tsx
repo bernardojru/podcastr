@@ -7,7 +7,7 @@ import {
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import { api } from "../lib/axios";
+import { pre } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
 
 import { format, parseISO } from "date-fns";
@@ -191,7 +191,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get("/episodes", {
+  const { data } = await pre.get("/premium", {
     params: {
       _limit: 12,
       _sort: "published_at",

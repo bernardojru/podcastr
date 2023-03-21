@@ -6,7 +6,7 @@ import {
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import { api } from "../lib/axios";
+import { fre } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
 
 import { format, parseISO } from "date-fns";
@@ -74,7 +74,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                         />
                       </td>
                       <td>
-                        <Link href={`/episodes/${episode.id}`}>
+                        <Link href={`/freemium/${episode.id}`}>
                           {episode.title}
                         </Link>
                       </td>
@@ -109,7 +109,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get("/episodes", {
+  const { data } = await fre.get("/freemium", {
     params: {
       _limit: 12,
       _sort: "published_at",
@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   const latestEpisodes = episodes.slice(0, 2);
-  const allEpisodes = episodes.slice(2, episodes.length);
+  const allEpisodes = episodes.slice();
 
   return {
     props: {

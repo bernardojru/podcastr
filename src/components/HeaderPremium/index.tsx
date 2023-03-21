@@ -7,23 +7,17 @@ import {
   EndContent,
 } from "./styles";
 
-import { useEffect, useState } from "react";
-
-import { useThemes } from "../../hooks/useThemes";
-import { prisma } from "../../lib/prisma";
 import ptBR from "date-fns/locale/pt-BR";
 
+import { useEffect, useState } from "react";
+import { useThemes } from "../../hooks/useThemes";
 import { ToggleThemesButton } from "../ToggleThemesButton";
 import { ArrowLeft } from "phosphor-react";
 import { Avatar } from "../Avatar";
-import { api, server } from "../../lib/axios";
-import { z } from "zod";
 import { Button } from "@ignite-ui/react";
-import Link from "next/link";
-import { useCheckout } from "../../contexts/CheckoutContext";
 import { useLogin } from "../../contexts/LoginContext";
 import { useAvatar } from "../../hooks/useAvatart";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import { Countdown } from "../Countdown";
 
 interface User {
@@ -35,35 +29,17 @@ interface User {
 
 export function HeaderPremium() {
   const { themes } = useThemes();
-  const { showItem } = useCheckout();
-  const [user, setUser] = useState<User | null>(null);
-  const { handleFile, deleteFile } = useAvatar();
+  const { deleteFile } = useAvatar();
   const { saveName, setSaveName, deleteStorage } = useLogin();
-
-  const name = "Bernardo José";
-
-  async function handleGetUserInfo() {
-    const { data } = await server.get("/api/", {
-      params: {
-        name: saveName,
-      },
-    });
-
-    const { user } = data;
-
-    setUser(user);
-    console.log(user, "aquiiiiiiiiiiiiiii!");
-  }
-
-  useEffect(() => {
-    setSaveName(localStorage.getItem("username"));
-  }, []);
-
   const [isOpen, setIsOpen] = useState(false);
 
   function openExitButton() {
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    setSaveName(localStorage.getItem("username"));
+  }, []);
 
   const currentDate = format(new Date(), "EEEEEE, d MMMM", {
     locale: ptBR,
@@ -74,7 +50,7 @@ export function HeaderPremium() {
       <img src="/logo-light.svg" alt="Podcastr" />
       <div>
         <>
-          {/* <button onClick={deleteFile}>sair aqui</button> */}
+          <button onClick={deleteFile}></button>
           <PopoverRootNav>
             <PopoverTrigger asChild>
               <button onClick={openExitButton}>
@@ -85,13 +61,14 @@ export function HeaderPremium() {
             </PopoverTrigger>
             <PopoverPortal>
               <PopoverContent>
-                <button onClick={() => deleteStorage("username")}>sair</button>
+                <Button onClick={deleteFile}>Apagar imagem</Button>
+                <Button onClick={() => deleteStorage("username")}>Sair</Button>
               </PopoverContent>
             </PopoverPortal>
           </PopoverRootNav>
           <PopoverRootNav>
             <PopoverTrigger asChild>
-              <Button variant="secondary">PLANO</Button>
+              <Button variant="primary">PLANO</Button>
             </PopoverTrigger>
             <PopoverPortal>
               <PopoverContent>

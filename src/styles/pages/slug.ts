@@ -2,6 +2,7 @@ import { styled } from "../.";
 
 export const Container = styled("div", {
   width: "100%",
+  height: "100vh",
 });
 export const EpisodeContainer = styled("main", {
   maxWidth: "45rem",

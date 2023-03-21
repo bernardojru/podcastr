@@ -4,7 +4,7 @@ import { useAvatar } from "../../hooks/useAvatart";
 import { useEffect } from "react";
 
 export function Avatar() {
-  const { previewImg, setPreviewImg, deleteFile } = useAvatar();
+  const { previewImg, setPreviewImg } = useAvatar();
 
   useEffect(() => {
     setPreviewImg(localStorage.getItem("image"));

@@ -48,23 +48,6 @@ export const PopoverTrigger = styled(Popover.Trigger, {
   background: "$avatar",
   borderRadius: "9999px",
   padding: "$2",
-
-  "> button": {
-    height: "4rem",
-    padding: "0 0.5rem",
-
-    display: "flex",
-    alignItems: "center",
-
-    gap: "1rem",
-
-    borderRadius: "9999px",
-    border: "1px solid $gray500",
-
-    strong: {
-      color: "#fff",
-    },
-  },
 });
 
 export const PopoverPortal = styled(Popover.Portal, {
@@ -85,6 +68,8 @@ export const PopoverPortal = styled(Popover.Portal, {
 });
 export const PopoverContent = styled(Popover.Content, {
   display: "flex",
+  flexDirection: "column",
+  gap: "$1",
   alignItems: "center",
   justifyContent: "center",
   color: "$text",
@@ -92,6 +77,12 @@ export const PopoverContent = styled(Popover.Content, {
   padding: "$3",
   marginTop: "$4",
   borderRadius: "$lg",
+
+  button: {
+    background: "transparent",
+    fontWeight: "$bold",
+    color: "$white",
+  },
 
   form: {
     input: {

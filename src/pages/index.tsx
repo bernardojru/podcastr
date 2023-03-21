@@ -45,14 +45,14 @@ export default function Home() {
             de desenvolvimento de softwares.
           </p>
           {saveName ? (
-              <Link href="/premium" prefetch>
-                <button>Entrar para o Premium</button>
-              </Link>
-            ) : (
-              <Link href="/podcast" prefetch>
-                <button>Entrar</button>
-              </Link>
-            )}
+            <Link href="/premium" prefetch>
+              <button>Entrar para o Premium</button>
+            </Link>
+          ) : (
+            <Link href="/podcast" prefetch>
+              <button>Entrar</button>
+            </Link>
+          )}
         </section>
 
         <section>

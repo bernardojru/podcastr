@@ -7,12 +7,13 @@ export const SearchResultsContainer = styled("main", {
   marginTop: "2rem",
 
   div: {
+    background: "$li",
+    border: "1px solid #2222",
     borderRadius: "1.5rem",
-    border: "1px solid rgb(32, 35, 39)",
 
     display: "flex",
     alignItems: "center",
-    paddingLeft: "1rem",
+    paddingLeft: "0.5rem",
     paddingTop: "0.5rem",
 
     span: {
@@ -20,8 +21,6 @@ export const SearchResultsContainer = styled("main", {
       lineHeight: "1.5rem",
       paddingRight: "2rem",
       color: "$h2",
-
-      textAlign: "center",
 
       "> img": {
         width: "6rem",
@@ -45,7 +44,7 @@ export const SearchResultsContainer = styled("main", {
         width: "2.5rem",
         height: "2.5rem",
 
-        background: "$h2",
+        background: "$button",
 
         border: "1px solid rgb(32, 35, 39)",
         borderRadius: "0.5rem",
