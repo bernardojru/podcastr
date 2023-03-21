@@ -6,7 +6,7 @@ import {
   Description,
 } from "../../styles/pages/slug";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { api } from "../../lib/axios";
+import { fre } from "../../lib/axios";
 import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
 import { format, parseISO } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -98,7 +98,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug }: any = context.params;
 
-  const { data } = await api.get(`/freemium/${slug}`);
+  const { data } = await fre.get(`/freemium/${slug}`);
 
   const episode = {
     id: data.id,

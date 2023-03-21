@@ -152,7 +152,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                           />
                         </td>
                         <td>
-                          <Link href={`/episodes/${episode.id}`}>
+                          <Link href={`/premium/${episode.id}`}>
                             {episode.title}
                           </Link>
                         </td>

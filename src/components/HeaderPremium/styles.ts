@@ -79,6 +79,7 @@ export const PopoverContent = styled(Popover.Content, {
   borderRadius: "$lg",
 
   button: {
+    width: "100%",
     background: "transparent",
     fontWeight: "$bold",
     color: "$white",

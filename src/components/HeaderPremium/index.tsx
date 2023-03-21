@@ -29,7 +29,7 @@ interface User {
 
 export function HeaderPremium() {
   const { themes } = useThemes();
-  const { deleteFile } = useAvatar();
+  const { handleFile, previewImg, deleteFile } = useAvatar();
   const { saveName, setSaveName, deleteStorage } = useLogin();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -62,6 +62,9 @@ export function HeaderPremium() {
             <PopoverPortal>
               <PopoverContent>
                 <Button onClick={deleteFile}>Apagar imagem</Button>
+                <Button>
+                  <input type="file" onChange={handleFile} />
+                </Button>
                 <Button onClick={() => deleteStorage("username")}>Sair</Button>
               </PopoverContent>
             </PopoverPortal>
