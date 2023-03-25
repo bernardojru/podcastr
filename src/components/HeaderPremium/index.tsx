@@ -63,7 +63,14 @@ export function HeaderPremium() {
               <PopoverContent>
                 <Button onClick={deleteFile}>Apagar imagem</Button>
                 <Button>
-                  <input type="file" onChange={handleFile} />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    hidden
+                    onChange={handleFile}
+                  />
+                  <button>Alterar imagem</button>
+                  {/* ver: https://www.youtube.com/watch?v=G5UZmvkLWSQ */}
                 </Button>
                 <Button onClick={() => deleteStorage("username")}>Sair</Button>
               </PopoverContent>

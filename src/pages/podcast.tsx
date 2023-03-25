@@ -21,6 +21,7 @@ interface Episodes {
   id: string;
   title: string;
   members: string;
+  visible: boolean;
   publishedAt: string;
   duration: number;
   thumbnail: string;
@@ -64,39 +65,44 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
                 {allEpisodes.map((episode, index) => (
                   <>
                     <div />
-                    <tr key={episode.id}>
-                      <td>
-                        <Image
-                          width={120}
-                          height={120}
-                          src={episode.thumbnail}
-                          alt={episode.title}
-                        />
-                      </td>
-                      <td>
-                        <Link href={`/freemium/${episode.id}`}>
-                          {episode.title}
-                        </Link>
-                      </td>
-                      <td>{episode.members}</td>
-                      <td className="published">{episode.publishedAt}</td>
-                      <td>{episode.durationAsString}</td>
-                      <td>
-                        <button
-                          style={{
-                            background: `${
-                              themes === "dark" ? "#131313" : "#eee"
-                            }`,
-                          }}
-                          onClick={() =>
-                            playList(episodeList, index + latestEpisodes.length)
-                          }
-                          type="button"
-                        >
-                          <Play size={15} color="green" weight="fill" />
-                        </button>
-                      </td>
-                    </tr>
+                    {episode.visible && (
+                      <tr key={episode.id}>
+                        <td>
+                          <Image
+                            width={120}
+                            height={120}
+                            src={episode.thumbnail}
+                            alt={episode.title}
+                          />
+                        </td>
+                        <td>
+                          <Link href={`/freemium/${episode.id}`}>
+                            {episode.title}
+                          </Link>
+                        </td>
+                        <td>{episode.members}</td>
+                        <td className="published">{episode.publishedAt}</td>
+                        <td>{episode.durationAsString}</td>
+                        <td>
+                          <button
+                            style={{
+                              background: `${
+                                themes === "dark" ? "#131313" : "#eee"
+                              }`,
+                            }}
+                            onClick={() =>
+                              playList(
+                                episodeList,
+                                index + latestEpisodes.length
+                              )
+                            }
+                            type="button"
+                          >
+                            <Play size={15} color="green" weight="fill" />
+                          </button>
+                        </td>
+                      </tr>
+                    )}
                   </>
                 ))}
               </tbody>
@@ -123,6 +129,7 @@ export const getStaticProps: GetStaticProps = async () => {
       title: episode.title,
       thumbnail: episode.thumbnail,
       members: episode.members,
+      visible: episode.visible,
       publishedAt: format(parseISO(episode.published_at), "d MMM yy", {
         locale: ptBR,
       }),
