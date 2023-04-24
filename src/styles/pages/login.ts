@@ -1,6 +1,6 @@
 import { styled } from "../.";
 
-export const RegisterContainer = styled("div", {
+export const LoginContainer = styled("div", {
   minWidth: "100%",
   minHeight: "100vh",
   display: "flex",
@@ -18,7 +18,7 @@ export const RegisterContainer = styled("div", {
   },
 });
 
-export const RegisterPageLabel = styled("div", {
+export const LoginPageLabel = styled("div", {
   display: "flex",
   gap: "$5",
   flexDirection: "column",
@@ -27,7 +27,7 @@ export const RegisterPageLabel = styled("div", {
   maxWidth: "25rem",
 });
 
-export const RegisterPageFormContainer = styled("form", {
+export const LoginPageFormContainer = styled("form", {
   width: "100%",
   maxWidth: "25rem",
   display: "flex",
@@ -80,7 +80,7 @@ export const Prefix = styled("span", {
 
 export const Input = styled("input", {
   fontSize: "$sm",
-  color: "$gray900",
+  color: "$gray700",
   fontWeight: "$regular",
   background: "$gray200",
   border: 0,
@@ -99,7 +99,7 @@ export const Input = styled("input", {
   },
 });
 
-export const RegisterPageFormFooter = styled("footer", {
+export const LoginPageFormFooter = styled("footer", {
   width: "100%",
   marginTop: "$5",
   display: "flex",
@@ -110,7 +110,7 @@ export const RegisterPageFormFooter = styled("footer", {
 
   p: {
     textAlign: "center",
-    color: "$gray800",
+    color: "$gray700",
     fontSize: "$sm",
   },
 
@@ -121,7 +121,7 @@ export const RegisterPageFormFooter = styled("footer", {
   },
 });
 
-export const RegisterPageFormButton = styled("button", {
+export const LoginPageFormButton = styled("button", {
   width: "100%",
   height: "3rem",
   display: "flex",

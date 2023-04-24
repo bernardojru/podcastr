@@ -1,3 +1,4 @@
+import * as Popover from "@radix-ui/react-popover";
 import { styled } from "../../styles/.";
 import Link from "next/link";
 
@@ -27,6 +28,69 @@ export const HeaderContainer = styled("header", {
 
   button: {
     fontWeight: "$bold",
+  },
+});
+
+export const PopoverRootNav = styled(Popover.Root, {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+
+  width: "100%",
+});
+
+export const PopoverTrigger = styled(Popover.Trigger, {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  color: "$colorAvatar",
+  background: "$avatar",
+  borderRadius: "9999px",
+  padding: "$2",
+});
+
+export const PopoverPortal = styled(Popover.Portal, {
+  position: "absolute",
+  display: "flex",
+  alignItems: "center",
+
+  background: "#555",
+  padding: "0 3rem",
+
+  height: "2rem",
+
+  borderRadius: " 30px",
+
+  zIndex: "50",
+  transition: "all .5s",
+  cursor: "pointer",
+});
+export const PopoverContent = styled(Popover.Content, {
+  display: "flex",
+  flexDirection: "column",
+  gap: "$1",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "$text",
+  background: "$gray800",
+  padding: "$3",
+  marginTop: "$4",
+  borderRadius: "$lg",
+
+  button: {
+    width: "100%",
+    background: "transparent",
+    fontWeight: "$bold",
+    color: "$white",
+  },
+
+  form: {
+    input: {
+      display: "none",
+    },
+
+    label: {},
   },
 });
 

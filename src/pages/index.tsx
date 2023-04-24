@@ -24,15 +24,9 @@ export default function Home() {
         <header>
           <img src="/simple-logo.svg" alt="" />
           <nav>
-            {saveName ? (
-              <Link href="/premium" prefetch>
-                <button>Entrar para o Premium</button>
-              </Link>
-            ) : (
-              <Link href="/podcast" prefetch>
-                <button>Entrar</button>
-              </Link>
-            )}
+            <Link href="/login" prefetch>
+              <button>Entrar</button>
+            </Link>
             <ToggleThemesButton />
           </nav>
         </header>
@@ -44,15 +38,10 @@ export default function Home() {
             Uma plataforma construída para transmissão de podcasts sobre a área
             de desenvolvimento de softwares.
           </p>
-          {saveName ? (
-            <Link href="/premium" prefetch>
-              <button>Entrar para o Premium</button>
-            </Link>
-          ) : (
-            <Link href="/podcast" prefetch>
-              <button>Entrar</button>
-            </Link>
-          )}
+
+          <Link href="/login" prefetch>
+            <button>Entrar</button>
+          </Link>
         </section>
 
         <section>

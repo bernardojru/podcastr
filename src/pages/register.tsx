@@ -1,67 +1,106 @@
-import { Header } from "../components/Header";
-import { MultiStep } from "@ignite-ui/react";
+import { Envelope, LockSimple, User } from "phosphor-react";
 import {
-  ContainerRegister,
-  ContainerCenter,
-  MultiStepContainer,
-  ContainerStepLogin,
+  Input,
+  Prefix,
+  RegisterContainer,
+  RegisterPageFormButton,
+  RegisterPageFormContainer,
+  RegisterPageFormFooter,
+  TextInputContainer,
+  RegisterPageLabel,
+  MessageError,
 } from "../styles/pages/register";
-import { GetStart } from "../components/Upgrade";
-import { useStepUpgrade } from "../hooks/useStepUpgrade";
-import { Login } from "../components/login";
-import { Payment } from "../components/Payment";
-import { useThemes } from "../hooks/useThemes";
-import { GetStaticProps } from "next";
-import { stripe } from "../services/stripe";
+import Link from "next/link";
 import Head from "next/head";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { server } from "../lib/axios";
+import { useRouter } from "next/router";
+import { AxiosError } from "axios";
 
-interface RegisterProps {
-  product: {
-    priceId: string;
-    amount: number;
-  };
-}
+const registerFormSchema = z.object({
+  name: z.string().min(6, { message: "O usuário precisa de um nome válido!" }),
+  email: z.string().min(4, { message: "O email precisa ser válido!" }),
+  password: z
+    .string()
+    .min(6, { message: "A senha precisa ser forte e segura!" }),
+});
 
-export default function Register({ product }: RegisterProps) {
-  const { themes } = useThemes();
-  const { size, currentStep } = useStepUpgrade();
+export type RegisterFormData = z.infer<typeof registerFormSchema>;
+
+export default function Register() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerFormSchema),
+  });
+
+  const router = useRouter();
+
+  async function handleSubmitRegister(data: RegisterFormData) {
+    try {
+      await server.post("/api/register", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+      await router.push("/podcast");
+    } catch (error) {
+      alert("chiebcie");
+    }
+  }
+
   return (
     <>
       <Head>
         <title>Register | Podcastr</title>
       </Head>
-      <Header />
-      <ContainerRegister className={themes}>
-        <ContainerCenter>
-          <MultiStepContainer>
-            <MultiStep size={size} currentStep={currentStep} />
-          </MultiStepContainer>
-          <ContainerStepLogin>
-            {currentStep === 1 && <GetStart />}
-            {currentStep === 2 && <Login />}
-            {currentStep === 3 && <Payment product={product} />}
-          </ContainerStepLogin>
-        </ContainerCenter>
-      </ContainerRegister>
+      <RegisterContainer>
+        <RegisterPageLabel>
+          <img src="/logo-light.svg" alt="Podcastr" />
+          <h1>Criar uma conta na plataforma!</h1>
+        </RegisterPageLabel>
+        <RegisterPageFormContainer
+          onSubmit={handleSubmit(handleSubmitRegister)}
+        >
+          <TextInputContainer>
+            <Prefix>
+              <Envelope size={15} weight="fill" color="#121214" />
+            </Prefix>
+            <Input placeholder="Seu E-mail" {...register("email")} />
+          </TextInputContainer>
+          <MessageError>{errors.email && errors.email.message}</MessageError>
+          <TextInputContainer>
+            <Prefix>
+              <User size={15} weight="fill" color="#121214" />
+            </Prefix>
+            <Input placeholder="Seu Nome" {...register("name")} />
+          </TextInputContainer>
+          <MessageError>{errors.name && errors.name.message}</MessageError>
+          <TextInputContainer>
+            <Prefix>
+              <LockSimple size={15} weight="fill" color="#121214" />
+            </Prefix>
+            <Input placeholder="Sua Senha" {...register("password")} />
+          </TextInputContainer>
+          <MessageError>
+            {errors.password && errors.password.message}
+          </MessageError>
+
+          <RegisterPageFormFooter>
+            <RegisterPageFormButton type="submit">
+              ENTRAR
+            </RegisterPageFormButton>
+
+            <p>
+              já tem uma conta? <Link href="/login">Login</Link>
+            </p>
+          </RegisterPageFormFooter>
+        </RegisterPageFormContainer>
+      </RegisterContainer>
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve("price_1MgpIfBKT6PAWvtCUBz3K1iU");
-
-  const product = {
-    priceId: price.id,
-    amount: new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(price.unit_amount! / 100),
-  };
-
-  return {
-    props: {
-      product,
-    },
-    revalidate: 60 * 60 * 24, // 24 hours
-  };
-};

@@ -105,4 +105,12 @@ export const {
       default: "Roboto, sans-serif",
     },
   },
+
+  media: {
+    bp1: "(max-width: 640px)",
+    bp2: "(max-width: 768px)",
+    bp3: "(max-width: 1024px)",
+    bp4: "(max-width: 1120px)",
+    bp5: "(max-width: 1364px)",
+  },
 });

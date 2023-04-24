@@ -13,7 +13,7 @@ import { Button } from "@ignite-ui/react";
 import { useLogin } from "../../contexts/LoginContext";
 import { useAvatar } from "../../hooks/useAvatart";
 
-const registerFormChema = z.object({
+const registerFormSchema = z.object({
   name: z
     .string()
     .min(3, { message: "O nome precisa ter pelo menos 4 caracteres!" }),
@@ -23,7 +23,7 @@ const registerFormChema = z.object({
     .min(5, { message: "A senha precisa ser forte e segura!" }),
 });
 
-export type RegisterFormData = z.infer<typeof registerFormChema>;
+export type RegisterFormData = z.infer<typeof registerFormSchema>;
 
 export function Login() {
   const {
@@ -31,7 +31,7 @@ export function Login() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerFormChema),
+    resolver: zodResolver(registerFormSchema),
   });
   const { themes } = useThemes();
   const { requestName } = useLogin();

@@ -1,12 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../lib/prisma";
+import { z } from "zod";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { name, password, email } = req.body;
+    const registerBodySchema = z.object({
+      name: z.string(),
+      email: z.string().email(),
+      password: z.string().min(6),
+    });
+    const { name, password, email } = registerBodySchema.parse(req.body);
 
     const user = await prisma.user.create({
       data: {
