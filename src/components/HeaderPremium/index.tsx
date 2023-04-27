@@ -19,6 +19,7 @@ import { useLogin } from "../../contexts/LoginContext";
 import { useAvatar } from "../../hooks/useAvatart";
 import { format } from "date-fns";
 import { Countdown } from "../Countdown";
+import Link from "next/link";
 
 interface User {
   id: string;
@@ -47,7 +48,9 @@ export function HeaderPremium() {
 
   return (
     <HeaderPremiumContainer className={themes}>
-      <img src="/logo-light.svg" alt="Podcastr" />
+      <Link href="/premium">
+        <img src="/logo-light.svg" alt="Podcastr" />
+      </Link>
       <div>
         <>
           <button onClick={deleteFile}></button>

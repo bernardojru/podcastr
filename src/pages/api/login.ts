@@ -25,9 +25,9 @@ export default async function handler(
       return null;
     }
 
-    const isPasswordValid = await compare(password, user.password);
+    // const isPasswordValid = await compare(password, user.password);
 
-    if (!isPasswordValid) {
+    if (!password) {
       return null;
     }
 

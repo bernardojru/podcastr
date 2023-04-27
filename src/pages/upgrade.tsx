@@ -1,48 +1,46 @@
 import { Header } from "../components/Header";
 import { MultiStep } from "@ignite-ui/react";
 import {
-  ContainerRegister,
+  ContainerUpgrade,
   ContainerCenter,
   MultiStepContainer,
   ContainerStepLogin,
 } from "../styles/pages/upgrade";
 import { GetStart } from "../components/Upgrade";
 import { useStepUpgrade } from "../hooks/useStepUpgrade";
-import { Login } from "../components/login";
 import { Payment } from "../components/Payment";
 import { useThemes } from "../hooks/useThemes";
 import { GetStaticProps } from "next";
 import { stripe } from "../services/stripe";
 import Head from "next/head";
 
-interface RegisterProps {
+interface UpgradeProps {
   product: {
     priceId: string;
     amount: number;
   };
 }
 
-export default function Upgrade({ product }: RegisterProps) {
+export default function Upgrade({ product }: UpgradeProps) {
   const { themes } = useThemes();
   const { size, currentStep } = useStepUpgrade();
   return (
     <>
       <Head>
-        <title>Register | Podcastr</title>
+        <title>Upgrade | Podcastr</title>
       </Head>
       <Header />
-      <ContainerRegister className={themes}>
+      <ContainerUpgrade className={themes}>
         <ContainerCenter>
           <MultiStepContainer>
             <MultiStep size={size} currentStep={currentStep} />
           </MultiStepContainer>
           <ContainerStepLogin>
             {currentStep === 1 && <GetStart />}
-            {currentStep === 2 && <Login />}
-            {currentStep === 3 && <Payment product={product} />}
+            {currentStep === 2 && <Payment product={product} />}
           </ContainerStepLogin>
         </ContainerCenter>
-      </ContainerRegister>
+      </ContainerUpgrade>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { styled } from "..";
 
-export const ContainerRegister = styled("div", {
+export const ContainerUpgrade = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

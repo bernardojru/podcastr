@@ -48,19 +48,15 @@ export function Header() {
 
   return (
     <HeaderContainer className={themes}>
-      <img src="/logo-light.svg" alt="Podcastr" />
+      <Link href="/podcast">
+        <img src="/logo-light.svg" alt="Podcastr" />
+      </Link>
       <div>
         <PopoverRootNav>
           <PopoverTrigger asChild>
             <button onClick={openExitButton}>
               <Avatar />
-              {user && (
-                <>
-                  <strong>{user.name}</strong>
-                  <strong>{user.email}</strong>
-                  <strong>{user.password}</strong>
-                </>
-              )}
+              <strong>{saveName}</strong>
             </button>
           </PopoverTrigger>
           <PopoverPortal>
@@ -74,7 +70,7 @@ export function Header() {
           </PopoverPortal>
         </PopoverRootNav>
         <>
-          <Link href="/register">
+          <Link href="/upgrade">
             <Button variant="secondary">UPGRADE</Button>
           </Link>
         </>

@@ -24,8 +24,11 @@ import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 
 const loginFormSchema = z.object({
-  email: z.string().min(4, { message: "Esse email não existe no sistema!" }),
-  password: z.string().min(5, { message: "A senha está incorreta!" }),
+  email: z
+    .string()
+    .email("Insira um endereço de e-mail válido")
+    .nonempty("O campo de e-mail é obrigatório"),
+  password: z.string().min(6, { message: "A senha está incorreta!" }),
 });
 
 export type LoginFormData = z.infer<typeof loginFormSchema>;
@@ -91,6 +94,9 @@ export default function Login() {
 
             <p>
               Não tem uma conta? <Link href="/register">Registre-se</Link>
+            </p>
+            <p>
+              Esqueceu a sua senha? <Link href="/request">Recuperar senha</Link>
             </p>
           </LoginPageFormFooter>
         </LoginPageFormContainer>

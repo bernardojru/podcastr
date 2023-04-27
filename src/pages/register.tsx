@@ -18,10 +18,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { server } from "../lib/axios";
 import { useRouter } from "next/router";
 import { AxiosError } from "axios";
+import { useLogin } from "../contexts/LoginContext";
 
 const registerFormSchema = z.object({
   name: z.string().min(6, { message: "O usuário precisa de um nome válido!" }),
-  email: z.string().min(4, { message: "O email precisa ser válido!" }),
+  email: z
+    .string()
+    .email("Insira um endereço de e-mail válido")
+    .nonempty("O campo de e-mail é obrigatório"),
   password: z
     .string()
     .min(6, { message: "A senha precisa ser forte e segura!" }),
@@ -37,19 +41,22 @@ export default function Register() {
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   });
+  const { requestName } = useLogin();
 
   const router = useRouter();
 
   async function handleSubmitRegister(data: RegisterFormData) {
+    const { name } = data;
     try {
       await server.post("/api/register", {
         name: data.name,
         email: data.email,
         password: data.password,
       });
+      requestName("username", name);
       await router.push("/podcast");
     } catch (error) {
-      alert("chiebcie");
+      console.log(error);
     }
   }
 

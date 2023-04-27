@@ -16,13 +16,13 @@ export default async function handler(
   const { name, email, password } = registerBodySchema.parse(req.body);
 
   try {
-    const password_hash = await hash(password, 6);
+    // const password_hash = await hash(password, 6);
 
     const user = await prisma.user.create({
       data: {
         name,
         email,
-        password: password_hash,
+        password,
       },
     });
 
