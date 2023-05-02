@@ -17,7 +17,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { server } from "../lib/axios";
 import { useRouter } from "next/router";
-import { AxiosError } from "axios";
 import { useLogin } from "../contexts/LoginContext";
 
 const registerFormSchema = z.object({
@@ -37,11 +36,11 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   });
-  const { requestName } = useLogin();
+  const { requestName, setSaveName } = useLogin();
 
   const router = useRouter();
 
@@ -54,6 +53,7 @@ export default function Register() {
         password: data.password,
       });
       requestName("username", name);
+      setSaveName(name);
       await router.push("/podcast");
     } catch (error) {
       console.log(error);
@@ -63,11 +63,16 @@ export default function Register() {
   return (
     <>
       <Head>
-        <title>Register | Podcastr</title>
+        <title>Register | berCast</title>
       </Head>
       <RegisterContainer>
         <RegisterPageLabel>
-          <img src="/logo-light.svg" alt="Podcastr" />
+          <Link href="/">
+            <div>
+              <img src="/icon-128x128.png" alt="" />
+              <strong>berCast</strong>
+            </div>
+          </Link>
           <h1>Criar uma conta na plataforma!</h1>
         </RegisterPageLabel>
         <RegisterPageFormContainer

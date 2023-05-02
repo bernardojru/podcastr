@@ -27,7 +27,7 @@ export default function Upgrade({ product }: UpgradeProps) {
   return (
     <>
       <Head>
-        <title>Upgrade | Podcastr</title>
+        <title>Upgrade | berCast</title>
       </Head>
       <Header />
       <ContainerUpgrade className={themes}>

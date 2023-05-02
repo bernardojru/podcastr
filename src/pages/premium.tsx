@@ -65,7 +65,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
   return (
     <>
       <Head>
-        <title>Premium | Podcastr</title>
+        <title>Podcasts Premium | berCast</title>
       </Head>
       <HeaderPremium />
       <PodcastContainer className={themes}>

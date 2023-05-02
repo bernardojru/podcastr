@@ -49,7 +49,10 @@ export function Header() {
   return (
     <HeaderContainer className={themes}>
       <Link href="/podcast">
-        <img src="/logo-light.svg" alt="Podcastr" />
+        <div>
+          <img src="/icon-128x128.png" alt="" />
+          <strong>berCast</strong>
+        </div>
       </Link>
       <div>
         <PopoverRootNav>

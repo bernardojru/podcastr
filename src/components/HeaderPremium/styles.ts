@@ -24,6 +24,23 @@ export const HeaderPremiumContainer = styled("header", {
   a: {
     borderRightWidth: "1px",
     paddingRight: "1rem",
+
+    div: {
+      display: "flex",
+      gap: "$5",
+      alignItems: "center",
+      justifyContent: "center",
+
+      img: {
+        width: "51px",
+        height: "51px",
+      },
+
+      strong: {
+        fontSize: "$2xl",
+        color: "$text",
+      },
+    },
   },
 
   button: {

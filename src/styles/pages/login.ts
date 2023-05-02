@@ -25,6 +25,23 @@ export const LoginPageLabel = styled("div", {
   alignItems: "start",
   width: "100%",
   maxWidth: "25rem",
+
+  div: {
+    display: "flex",
+    gap: "$5",
+    alignItems: "center",
+    justifyContent: "center",
+
+    img: {
+      width: "51px",
+      height: "51px",
+    },
+
+    strong: {
+      fontSize: "$2xl",
+      color: "$text",
+    },
+  },
 });
 
 export const LoginPageFormContainer = styled("form", {

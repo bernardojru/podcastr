@@ -18,11 +18,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Podcastr</title>
+        <title>Home | berCast</title>
       </Head>
       <HomeContainer className={themes}>
         <header>
-          <img src="/simple-logo.svg" alt="" />
+          <div>
+            <img src="/icon-128x128.png" alt="" />
+            <strong>berCast</strong>
+          </div>
           <nav>
             <Link href="/login" prefetch>
               <button>Entrar</button>

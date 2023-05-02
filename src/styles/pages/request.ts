@@ -22,16 +22,13 @@ export const RequestConst = styled("div", {
   paddingBottom: "$10",
   borderRadius: "$sm",
 
-  strong: {
+  a: {
     paddingInline: "$5",
     paddingTop: "$5",
     paddingBottom: "$5",
     backgroundColor: "$gray200",
     border: "1px solid $gray400",
     borderRadius: "$sm",
-  },
-
-  a: {
     display: "flex",
     gap: "$2",
     alignItems: "center",

@@ -11,6 +11,7 @@ import { RegisterFormData } from "../components/login";
 import { useStepUpgrade } from "../hooks/useStepUpgrade";
 import { server } from "../lib/axios";
 import { prisma } from "../lib/prisma";
+import { useAvatar } from "../hooks/useAvatart";
 
 interface LoginContextProps {
   saveName: string;
@@ -28,6 +29,7 @@ export const LoginContext = createContext({} as LoginContextProps);
 export function LoginContextProvider({ children }: LoginContextProviderProps) {
   const { showStepPayment } = useStepUpgrade();
   const [saveName, setSaveName] = useState("");
+  const { deleteFile } = useAvatar();
   const router = useRouter();
 
   function requestName(key: string, name: string) {
@@ -40,6 +42,7 @@ export function LoginContextProvider({ children }: LoginContextProviderProps) {
 
   function deleteStorage(key: string) {
     localStorage.removeItem(key);
+    localStorage.removeItem("image");
     router.push("/");
   }
 

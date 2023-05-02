@@ -8,11 +8,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const loginBodySchema = z.object({
+    name: z.string(),
     email: z.string().email(),
     password: z.string().min(6),
   });
 
-  const { email, password } = loginBodySchema.parse(req.body);
+  const { name, email, password } = loginBodySchema.parse(req.body);
 
   try {
     const user = await prisma.user.findUnique({
@@ -25,7 +26,9 @@ export default async function handler(
       return null;
     }
 
-    // const isPasswordValid = await compare(password, user.password);
+    if (!name) {
+      return null;
+    }
 
     if (!password) {
       return null;

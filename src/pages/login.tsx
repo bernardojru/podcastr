@@ -1,4 +1,4 @@
-import { Envelope, LockSimple } from "phosphor-react";
+import { Envelope, LockSimple, User } from "phosphor-react";
 import {
   LoginContainer,
   LoginPageFormButton,
@@ -14,8 +14,6 @@ import Link from "next/link";
 import Head from "next/head";
 import { z } from "zod";
 import { server } from "../lib/axios";
-import { useAvatar } from "../hooks/useAvatart";
-import { useStepUpgrade } from "../hooks/useStepUpgrade";
 import { useLogin } from "../contexts/LoginContext";
 import { useThemes } from "../hooks/useThemes";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,6 +22,7 @@ import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 
 const loginFormSchema = z.object({
+  name: z.string().min(6, { message: "O usuário precisa de um nome válido!" }),
   email: z
     .string()
     .email("Insira um endereço de e-mail válido")
@@ -37,24 +36,26 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginFormSchema),
   });
   const { themes } = useThemes();
-  const { requestName } = useLogin();
-  const { showStepPayment } = useStepUpgrade();
-  const { handleFile, previewImg } = useAvatar();
+  const { requestName, setSaveName } = useLogin();
 
   const router = useRouter();
 
   async function handleSubmitLogin(data: LoginFormData) {
+    const { name } = data;
     try {
       await server.post("/api/login", {
+        name: data.name,
         email: data.email,
         password: data.password,
       });
       await router.push(`/podcast`);
+      requestName("username", name);
+      setSaveName(name);
     } catch (error) {
       if (error instanceof AxiosError && error?.response?.data?.message) {
         alert(error.response.data.message);
@@ -65,14 +66,26 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Login | Podcastr</title>
+        <title>Login | berCast</title>
       </Head>
       <LoginContainer className={themes}>
         <LoginPageLabel>
-          <img src="/logo-light.svg" alt="Podcastr" />
+          <Link href="/">
+            <div>
+              <img src="/icon-128x128.png" alt="" />
+              <strong>berCast</strong>
+            </div>
+          </Link>
           <h1>Fazer login na plataforma!</h1>
         </LoginPageLabel>
         <LoginPageFormContainer onSubmit={handleSubmit(handleSubmitLogin)}>
+          <TextInputContainer>
+            <Prefix>
+              <User size={15} weight="fill" color="#121214" />
+            </Prefix>
+            <Input placeholder="Seu Nome" {...register("name")} />
+          </TextInputContainer>
+          <MessageError>{errors.name && errors.name.message}</MessageError>
           <TextInputContainer>
             <Prefix>
               <Envelope size={15} weight="fill" color="#121214" />

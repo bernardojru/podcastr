@@ -47,7 +47,7 @@ export default function FreemiumEpisode({ episode }: EpisodeProps) {
       <Head>
         <title>{episode.title} | Podcastr</title>
       </Head>
-      {saveName ? <HeaderPremium /> : <Header />}
+      <Header />
       <Container
         style={{ background: `${themes === dark ? "#131313" : "#eee"}` }}
       >

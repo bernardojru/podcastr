@@ -16,9 +16,21 @@ export const HomeContainer = styled("main", {
     justifyContent: "space-between",
     padding: "1rem 3rem",
 
-    img: {
-      width: "51px",
-      height: "51px",
+    div: {
+      display: "flex",
+      gap: "$5",
+      alignItems: "center",
+      justifyContent: "center",
+
+      img: {
+        width: "51px",
+        height: "51px",
+      },
+
+      strong: {
+        fontSize: "$2xl",
+        color: "$text",
+      },
     },
     nav: {
       display: "flex",
