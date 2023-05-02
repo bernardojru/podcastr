@@ -1,13 +1,5 @@
-import { AxiosError } from "axios";
 import { useRouter } from "next/router";
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { RegisterFormData } from "../components/login";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { useStepUpgrade } from "../hooks/useStepUpgrade";
 import { server } from "../lib/axios";
 import { prisma } from "../lib/prisma";
