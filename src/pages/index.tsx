@@ -15,6 +15,7 @@ export default function Home() {
   useEffect(() => {
     setSaveName(localStorage.getItem("username"));
   }, []);
+
   return (
     <>
       <Head>

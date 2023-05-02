@@ -5,7 +5,7 @@ import {
   AllEpisodeContainer,
 } from "../styles/pages/premium";
 import Head from "next/head";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { pre } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
@@ -37,7 +37,10 @@ interface PodcastProps {
   allEpisodes: Episodes[];
 }
 
-export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
+export default function PodcastPremium({
+  latestEpisodes,
+  allEpisodes,
+}: PodcastProps) {
   const { playList } = usePlayer();
   const { themes } = useThemes();
   const [search, setSearch] = useState("");
@@ -56,7 +59,7 @@ export default function Podcast({ latestEpisodes, allEpisodes }: PodcastProps) {
       return;
     }
 
-    const response = await fetch(`http://localhost:5000/episodes?q=${search}`);
+    const response = await fetch(`http://localhost:8000/premium?q=${search}`);
     const data = await response.json();
 
     setResults(data);

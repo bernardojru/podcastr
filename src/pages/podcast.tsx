@@ -4,7 +4,7 @@ import {
   AllEpisodeContainer,
 } from "../styles/pages/podcast";
 import Head from "next/head";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { fre } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
