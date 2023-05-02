@@ -19,7 +19,7 @@ export function Payment({ product }: PaymentProps) {
       const { checkoutUrl } = response.data;
       window.location.href = checkoutUrl;
     } catch (err) {
-      alert(err);
+      alert("Erro ao fazer o pagamento no componente Payment");
     }
   }
 

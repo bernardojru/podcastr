@@ -1,12 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "../../services/stripe";
 import { prisma } from "../../lib/prisma";
+import { z } from "zod";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const queryEmailSchema = z.object({
+    email: z.string(),
+  });
   const { priceId } = req.body;
+  const { email } = queryEmailSchema.parse(req.query);
 
   if (!priceId) {
     return res.status(400).json({ error: "Id do preço ou do usuário vazio!" });
@@ -24,10 +29,10 @@ export default async function handler(
     cancel_url: cancelUrl,
   });
 
-  // await prisma.user.update({
-  //   where: { id: "397c9467-238e-4b4f-a0de-47e1a6913ee6" },
-  //   data: { subscribed: true },
-  // });
+  await prisma.user.update({
+    where: { email },
+    data: { subscribed: true },
+  });
 
   return res.status(201).json({
     checkoutUrl: checkoutSession.url,

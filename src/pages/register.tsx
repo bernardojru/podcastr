@@ -46,7 +46,7 @@ export default function Register() {
   const router = useRouter();
 
   async function handleSubmitRegister(data: RegisterFormData) {
-    const { name } = data;
+    const { name, email } = data;
     try {
       await server.post("/api/register", {
         name: data.name,
@@ -55,7 +55,7 @@ export default function Register() {
       });
       requestName("username", name);
       setSaveName(name);
-      await router.push("/podcast");
+      await router.push(`/podcast?email=${email}`);
     } catch (error) {
       console.log(error);
     }

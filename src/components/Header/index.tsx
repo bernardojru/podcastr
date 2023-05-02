@@ -17,6 +17,7 @@ import { useLogin } from "../../contexts/LoginContext";
 import { useAvatar } from "../../hooks/useAvatart";
 import { FormEvent, useEffect, useState } from "react";
 import { server } from "../../lib/axios";
+import { useRouter } from "next/router";
 
 interface User {
   name: string;
@@ -30,6 +31,9 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { themes } = useThemes();
   const [user, setUser] = useState<User>();
+
+  const router = useRouter();
+  const { email } = router.query;
 
   function handleSubmit() {
     server
@@ -73,7 +77,7 @@ export function Header() {
           </PopoverPortal>
         </PopoverRootNav>
         <>
-          <Link href="/upgrade">
+          <Link href={`/upgrade?email=${email}`}>
             <Button variant="secondary">UPGRADE</Button>
           </Link>
         </>
