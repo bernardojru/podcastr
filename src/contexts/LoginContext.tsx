@@ -7,8 +7,10 @@ import { useAvatar } from "../hooks/useAvatart";
 
 interface LoginContextProps {
   saveName: string;
+  saveEmail: string;
   setSaveName: any;
   requestName: (key: string, name: string) => void;
+  requestEmail: (key: string, email: string) => void;
   deleteStorage: (key: string) => void;
 }
 
@@ -21,6 +23,7 @@ export const LoginContext = createContext({} as LoginContextProps);
 export function LoginContextProvider({ children }: LoginContextProviderProps) {
   const { showStepPayment } = useStepUpgrade();
   const [saveName, setSaveName] = useState("");
+  const [saveEmail, setSaveEmail] = useState("");
   const { deleteFile } = useAvatar();
   const router = useRouter();
 
@@ -32,6 +35,14 @@ export function LoginContextProvider({ children }: LoginContextProviderProps) {
     }
   }
 
+  function requestEmail(key: string, email: string) {
+    localStorage.setItem(key, email);
+    if (email && key) {
+      localStorage.getItem(key);
+      setSaveEmail(email);
+    }
+  }
+
   function deleteStorage(key: string) {
     localStorage.removeItem(key);
     localStorage.removeItem("image");
@@ -40,7 +51,14 @@ export function LoginContextProvider({ children }: LoginContextProviderProps) {
 
   return (
     <LoginContext.Provider
-      value={{ requestName, saveName, setSaveName, deleteStorage }}
+      value={{
+        requestName,
+        requestEmail,
+        saveName,
+        saveEmail,
+        setSaveName,
+        deleteStorage,
+      }}
     >
       {children}
     </LoginContext.Provider>

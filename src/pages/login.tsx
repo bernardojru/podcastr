@@ -12,7 +12,7 @@ import {
 } from "../styles/pages/login";
 import Link from "next/link";
 import Head from "next/head";
-import { z } from "zod";
+import { boolean, z } from "zod";
 import { server } from "../lib/axios";
 import { useLogin } from "../contexts/LoginContext";
 import { useThemes } from "../hooks/useThemes";
@@ -20,6 +20,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
+import { prisma } from "../lib/prisma";
 
 const loginFormSchema = z.object({
   name: z.string().min(6, { message: "O usuário precisa de um nome válido!" }),
@@ -32,7 +34,11 @@ const loginFormSchema = z.object({
 
 export type LoginFormData = z.infer<typeof loginFormSchema>;
 
-export default function Login() {
+interface LoginProps {
+  userSubscribed: boolean;
+}
+
+export default function Login({ userSubscribed }: LoginProps) {
   const {
     register,
     handleSubmit,
@@ -40,22 +46,29 @@ export default function Login() {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginFormSchema),
   });
+  const { requestName, requestEmail, setSaveName, saveEmail } = useLogin();
   const { themes } = useThemes();
-  const { requestName, setSaveName } = useLogin();
 
   const router = useRouter();
 
   async function handleSubmitLogin(data: LoginFormData) {
-    const { name } = data;
+    const { name, email } = data;
     try {
-      await server.post("/api/login", {
+      const user = await server.post("/api/login", {
         name: data.name,
         email: data.email,
         password: data.password,
       });
-      await router.push(`/podcast`);
-      requestName("username", name);
-      setSaveName(name);
+
+      if (user.data.userSubscribed) {
+        await router.push("premium");
+        setSaveName(name);
+      } else {
+        await router.push(`/podcast?email=${email}`);
+        requestName("username", name);
+        requestEmail("email", email);
+        setSaveName(name);
+      }
     } catch (error) {
       if (error instanceof AxiosError && error?.response?.data?.message) {
         alert(error.response.data.message);
@@ -117,3 +130,7 @@ export default function Login() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
+};

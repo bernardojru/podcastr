@@ -20,6 +20,7 @@ export default async function handler(
         email,
       },
     });
+    const userSubscribed = !!user?.subscribed;
 
     if (!user) {
       return null;
@@ -33,7 +34,7 @@ export default async function handler(
       return null;
     }
 
-    return res.send({ message: "Login bem-sucedido" });
+    return res.send({ userSubscribed });
   } catch (error) {
     console.log("Tivemos o seguinte erro:", error);
   }

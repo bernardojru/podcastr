@@ -27,7 +27,7 @@ interface User {
 
 export function Header() {
   const { handleFile, previewImg, deleteFile } = useAvatar();
-  const { saveName, setSaveName, deleteStorage } = useLogin();
+  const { saveName, setSaveName, deleteStorage, saveEmail } = useLogin();
   const [isOpen, setIsOpen] = useState(false);
   const { themes } = useThemes();
   const [user, setUser] = useState<User>();
@@ -81,7 +81,7 @@ export function Header() {
             <Button variant="secondary">UPGRADE</Button>
           </Link>
         </>
-        <EndContent href="/">
+        <EndContent href={`/?email=${saveEmail}`}>
           <ArrowLeft size={25} />
         </EndContent>
         <ToggleThemesButton />

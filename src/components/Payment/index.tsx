@@ -1,6 +1,7 @@
 import { PaymentContainer } from "./styles";
 import { Button } from "@ignite-ui/react";
 import { server } from "../../lib/axios";
+import { useRouter } from "next/router";
 
 interface PaymentProps {
   product: {
@@ -10,16 +11,18 @@ interface PaymentProps {
 }
 
 export function Payment({ product }: PaymentProps) {
+  const router = useRouter();
+  const { email } = router.query;
   async function handleSubscribe() {
     try {
-      const response = await server.post("/api/upgrade", {
+      const response = await server.post(`api/upgrade?email=${email}`, {
         priceId: product.priceId,
       });
 
       const { checkoutUrl } = response.data;
       window.location.href = checkoutUrl;
     } catch (err) {
-      alert("Erro ao fazer o pagamento no componente Payment");
+      alert("Erro ao fazer o pagamento no por causa do query params na api");
     }
   }
 

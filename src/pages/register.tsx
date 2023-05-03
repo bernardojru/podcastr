@@ -19,6 +19,7 @@ import { server } from "../lib/axios";
 import { useRouter } from "next/router";
 import { useLogin } from "../contexts/LoginContext";
 import { prisma } from "../lib/prisma";
+import { useState } from "react";
 
 const registerFormSchema = z.object({
   name: z.string().min(6, { message: "O usuário precisa de um nome válido!" }),
@@ -41,7 +42,7 @@ export default function Register() {
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   });
-  const { requestName, setSaveName } = useLogin();
+  const { requestName, requestEmail, setSaveName } = useLogin();
 
   const router = useRouter();
 
@@ -54,6 +55,7 @@ export default function Register() {
         password: data.password,
       });
       requestName("username", name);
+      requestEmail("email", email);
       setSaveName(name);
       await router.push(`/podcast?email=${email}`);
     } catch (error) {

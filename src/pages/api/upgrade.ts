@@ -10,12 +10,20 @@ export default async function handler(
   const queryEmailSchema = z.object({
     email: z.string(),
   });
-  const { priceId } = req.body;
   const { email } = queryEmailSchema.parse(req.query);
+  const { priceId } = req.body;
 
   if (!priceId) {
     return res.status(400).json({ error: "Id do preço ou do usuário vazio!" });
   }
+
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (user?.subscribed) {
+    return res
+      .status(400)
+      .json({ error: "Usuário já está inscrito no plano." });
+  }
+
   const successUrl = `${process.env.NEXT_URL}/premium?session_id={CHECKOUT_SESSION_ID}`;
   const cancelUrl = `${process.env.NEXT_URL}/podcast`;
 
