@@ -18,8 +18,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { server } from "../lib/axios";
 import { useRouter } from "next/router";
 import { useLogin } from "../contexts/LoginContext";
-import { prisma } from "../lib/prisma";
-import { useState } from "react";
 
 const registerFormSchema = z.object({
   name: z.string().min(6, { message: "O usuário precisa de um nome válido!" }),

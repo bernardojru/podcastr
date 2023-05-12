@@ -4,7 +4,7 @@ import {
   AllEpisodeContainer,
 } from "../styles/pages/podcast";
 import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import { fre } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
@@ -16,7 +16,6 @@ import { useThemes } from "../hooks/useThemes";
 import { Header } from "../components/Header";
 import { ptBR } from "date-fns/locale";
 import { Play } from "phosphor-react";
-import { useEffect } from "react";
 
 interface Episodes {
   id: string;

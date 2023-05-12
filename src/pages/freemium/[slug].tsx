@@ -19,7 +19,6 @@ import { useThemes } from "../../hooks/useThemes";
 import { dark } from "../../styles/themes/dark";
 import { Play, ArrowUUpLeft } from "phosphor-react";
 import { useLogin } from "../../contexts/LoginContext";
-import { HeaderPremium } from "../../components/HeaderPremium";
 
 type Episode = {
   id: string;
@@ -39,7 +38,6 @@ interface EpisodeProps {
 
 export default function FreemiumEpisode({ episode }: EpisodeProps) {
   const { themes } = useThemes();
-  const { saveName } = useLogin();
   const { play } = usePlayer();
 
   return (

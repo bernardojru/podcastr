@@ -3,7 +3,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../lib/prisma";
 import { z } from "zod";
-import { compare } from "bcryptjs";
 
 export default async function handler(
   req: NextApiRequest,

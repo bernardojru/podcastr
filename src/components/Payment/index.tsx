@@ -22,7 +22,9 @@ export function Payment({ product }: PaymentProps) {
       const { checkoutUrl } = response.data;
       window.location.href = checkoutUrl;
     } catch (err) {
-      alert("Erro ao fazer o pagamento no por causa do query params na api");
+      alert(
+        "Erro ao fazer o pagamento no por causa do email que não se encontra na url da rota"
+      );
     }
   }
 

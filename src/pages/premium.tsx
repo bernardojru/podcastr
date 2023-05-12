@@ -5,7 +5,7 @@ import {
   AllEpisodeContainer,
 } from "../styles/pages/premium";
 import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import { pre } from "../lib/axios";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
@@ -47,10 +47,6 @@ export default function PodcastPremium({
   const [results, setResults] = useState([]);
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
-
-  const currentDate = format(new Date(), "EEEEEE, d MMMM", {
-    locale: ptBR,
-  });
 
   async function handleSearch(e: FormEvent) {
     e.preventDefault();

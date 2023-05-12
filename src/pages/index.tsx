@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   const { themes } = useThemes();
-  const { saveName, setSaveName } = useLogin();
+  const { setSaveName } = useLogin();
 
   useEffect(() => {
     setSaveName(localStorage.getItem("username"));
