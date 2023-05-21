@@ -19,6 +19,7 @@ import { useThemes } from "../../hooks/useThemes";
 import { dark } from "../../styles/themes/dark";
 import { Play, ArrowUUpLeft } from "phosphor-react";
 import { useLogin } from "../../contexts/LoginContext";
+import { useRouter } from "next/router";
 
 type Episode = {
   id: string;
@@ -39,6 +40,7 @@ interface EpisodeProps {
 export default function FreemiumEpisode({ episode }: EpisodeProps) {
   const { themes } = useThemes();
   const { play } = usePlayer();
+  const { saveEmail } = useLogin();
 
   return (
     <>
@@ -53,7 +55,7 @@ export default function FreemiumEpisode({ episode }: EpisodeProps) {
           style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
         >
           <ThumbnailContainer>
-            <Link href="/podcast">
+            <Link href={`/podcast?email=${saveEmail}`}>
               <button type="button">
                 <ArrowUUpLeft size={20} color="white" weight="fill" />
               </button>

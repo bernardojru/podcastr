@@ -41,7 +41,7 @@ export function SearchResults({
             />
           </span>
           <span>
-            <Link href={`/episodes/${episode.id}`}>{episode.title}</Link>
+            <Link href={`/premium/${episode.id}`}>{episode.title}</Link>
           </span>
           <span>{episode.members}</span>
           <span className="published">{episode.publishedAt}</span>

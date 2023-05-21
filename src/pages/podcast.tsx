@@ -149,6 +149,6 @@ export const getStaticProps: GetStaticProps = async () => {
       latestEpisodes,
       allEpisodes,
     },
-    revalidate: 60 * 60 * 8,
+    revalidate: 60 * 60 * 8, // = 28.800 / 60min = 480 / 60min = 8 dias
   };
 };

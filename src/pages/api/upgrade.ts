@@ -25,7 +25,7 @@ export default async function handler(
   }
 
   const successUrl = `${process.env.NEXT_URL}/premium?session_id={CHECKOUT_SESSION_ID}`;
-  const cancelUrl = `${process.env.NEXT_URL}/podcast`;
+  const cancelUrl = `${process.env.NEXT_URL}/`;
 
   const checkoutSession = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],

@@ -45,31 +45,31 @@ export function PlayerContextProvider({
   const [isShuffling, setIsShuffling] = useState(false);
   const [show, setShow] = useState(true);
 
-  function handleShowPlayer() {
+  function handleShowPlayer() { // mostrar o componente player
     setShow((state) => !state);
   }
 
-  function play(episode: Episode) {
+  function play(episode: Episode) { // podcast isolado na página slug
     setEpisodeList([episode]);
     setCurrentEpisodeIndex(0);
     setIsPlaying(true);
   }
 
-  function playList(list: Episode[], index: number) {
+  function playList(list: Episode[], index: number) { // na lista, mostrar apenas o que foi clicado no player
     setEpisodeList(list);
     setCurrentEpisodeIndex(index);
     setIsPlaying(true);
     handleShowPlayer();
   }
 
-  function togglePlay() {
+  function togglePlay() { // informa se tem um episodio a tocar mudando o estado do botão
     setIsPlaying(!isPlaying);
   }
 
-  const hasPrevious = currentEpisodeIndex > 0;
-  const hasNext = isShuffling || currentEpisodeIndex + 1 < episodeList.length;
+  const hasPrevious = currentEpisodeIndex > 0; // se tiver uma posição está (1) e quer dizer que ele clicou
+  const hasNext = isShuffling || currentEpisodeIndex + 1 < episodeList.length; // verifica tanto se está no aleatório ou se tem uma posição menor que a quantia de podcast na lista é maior e permite avançar para o próximo.
 
-  function playNext() {
+  function playNext() { // avança o podcast estando aleatório ou quando tem ainda tem podcast na fila da lista
     if (isShuffling) {
       const nextRandomEpisodeIndex = Math.floor(
         Math.random() * episodeList.length
@@ -80,25 +80,25 @@ export function PlayerContextProvider({
     }
   }
 
-  function playPrevious() {
+  function playPrevious() { // pega a posição do episodio atual e volta para a posição anterior
     if (hasPrevious) {
       setCurrentEpisodeIndex(currentEpisodeIndex - 1);
     }
   }
 
-  function toggleLoop() {
+  function toggleLoop() { // ativa o modo repetitivo
     setIsLooping(!isLooping);
   }
 
-  function toggleShuffling() {
+  function toggleShuffling() { // ativa o modo aleatório
     setIsShuffling(!isShuffling);
   }
 
-  function setPlayingState(state: boolean) {
+  function setPlayingState(state: boolean) { // verifica se está a tocar
     setIsPlaying(state);
   }
 
-  function clearPlayerState() {
+  function clearPlayerState() { // termina de reproduzir quando chega ao fim de uma lista e já está vazia
     setEpisodeList([]);
     setCurrentEpisodeIndex(0);
   }
