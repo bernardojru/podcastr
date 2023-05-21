@@ -97,7 +97,7 @@ export default function PodcastPremium({
                   />
 
                   <div>
-                    <Link href={`/episodes/${latestEpisode.id}`}>
+                    <Link href={`/premium/${latestEpisode.id}`}>
                       {latestEpisode.title}
                     </Link>
                     <p>{latestEpisode.members}</p>
