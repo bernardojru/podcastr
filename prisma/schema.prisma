@@ -11,12 +11,24 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  name       String   @unique
+  id         String    @id @default(uuid())
+  name       String    @unique
   password   String
-  email      String   @unique
-  subscribed Boolean  @default(false)
-  created_at DateTime @default(now())
+  email      String    @unique
+  subscribed Boolean   @default(false)
+  created_at DateTime  @default(now())
+  Payment    Payment[]
 
   @@map("users")
+}
+
+model Payment {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  isPremium  Boolean  @default(false)
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("payment")
 }

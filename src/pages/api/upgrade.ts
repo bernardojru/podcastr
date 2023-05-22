@@ -42,6 +42,17 @@ export default async function handler(
     data: { subscribed: true },
   });
 
+  const getUserId = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  await prisma.payment.create({
+    data: {
+      isPremium: true!,
+      user_id: getUserId?.id!,
+    },
+  });
+
   return res.status(201).json({
     checkoutUrl: checkoutSession.url,
   });
