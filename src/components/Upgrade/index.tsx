@@ -17,7 +17,7 @@ export function GetStart() {
 
   return (
     <UpgradeContainer>
-      <Text size="2xl">Sobre o seu Upgrade</Text>
+      <Text size="2xl">Sobre o seu plano Premium</Text>
       <div>
         <Check size={20} color={`${themes === dark ? "#fff" : "#000"}`} />
         <p>Acesso a uma lista ilimitada de podcasts.</p>

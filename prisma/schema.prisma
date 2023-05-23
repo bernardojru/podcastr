@@ -26,6 +26,8 @@ model Payment {
   id         String   @id @default(uuid())
   created_at DateTime @default(now())
   isPremium  Boolean  @default(false)
+  value      String
+  expired_at String
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String

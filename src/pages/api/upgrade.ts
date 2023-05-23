@@ -50,6 +50,8 @@ export default async function handler(
     data: {
       isPremium: true!,
       user_id: getUserId?.id!,
+      value: "1.000 kz",
+      expired_at: "1 mês",
     },
   });
 

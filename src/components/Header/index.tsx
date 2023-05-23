@@ -78,7 +78,7 @@ export function Header() {
         </PopoverRootNav>
         <>
           <Link href={`/upgrade?email=${email}`}>
-            <Button variant="secondary">UPGRADE</Button>
+            <Button variant="secondary">PREMIUM</Button>
           </Link>
         </>
         <EndContent href={`/?email=${saveEmail}`}>

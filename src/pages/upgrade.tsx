@@ -46,13 +46,13 @@ export default function Upgrade({ product }: UpgradeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve("price_1MgpIfBKT6PAWvtCUBz3K1iU");
+  const price = await stripe.prices.retrieve("price_1NB3LWBKT6PAWvtC1BcOi6YX");
 
   const product = {
     priceId: price.id,
     amount: new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "AOA",
     }).format(price.unit_amount! / 100),
   };
 
