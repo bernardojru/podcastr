@@ -9,5 +9,5 @@ export const pre = axios.create({
 });
 
 export const server = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:3000/",
 });

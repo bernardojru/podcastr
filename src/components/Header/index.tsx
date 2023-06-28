@@ -15,36 +15,17 @@ import Link from "next/link";
 import { Avatar } from "../Avatar";
 import { useLogin } from "../../contexts/LoginContext";
 import { useAvatar } from "../../hooks/useAvatart";
-import { FormEvent, useEffect, useState } from "react";
-import { server } from "../../lib/axios";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
-interface User {
-  name: string;
-  email: string;
-  password: string;
-}
-
 export function Header() {
-  const { handleFile, previewImg, deleteFile } = useAvatar();
-  const { saveName, setSaveName, deleteStorage, saveEmail } = useLogin();
+  const { handleFile, deleteFile } = useAvatar();
+  const { saveName, deleteStorage, saveEmail } = useLogin();
   const [isOpen, setIsOpen] = useState(false);
   const { themes } = useThemes();
-  const [user, setUser] = useState<User>();
 
   const router = useRouter();
   const { email } = router.query;
-
-  function handleSubmit() {
-    server
-      .get(`/api/profile?email=929e6392-de03-4d39-bd04-30e4acf9df47`)
-      .then((res: any) => setUser(res))
-      .catch((error) => console.error(error));
-  }
-
-  useEffect(() => {
-    handleSubmit();
-  }, []);
 
   function openExitButton() {
     setIsOpen(!isOpen);

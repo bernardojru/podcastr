@@ -37,7 +37,7 @@ export default function Home() {
 
         <section>
           <span>Podcast Application</span>
-          <h1>Tech podcast</h1>
+          <h1>Tecnologia</h1>
           <p>
             Uma plataforma construída para transmissão de podcasts sobre a área
             de desenvolvimento de softwares.

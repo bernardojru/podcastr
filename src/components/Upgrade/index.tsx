@@ -31,8 +31,12 @@ export function GetStart() {
         <p>Sem anúncios.</p>
       </div>
       <div>
+        <Check size={20} color={`${themes === dark ? "#fff" : "#000"}`} />
+        <p>Falar diretamente com o SEO.</p>
+      </div>
+      <div>
         <Checkbox onClick={acceptTermsUser} />
-        <p>Aceitar termos de uso, para poder avançar</p>
+        <p>Concordar sobre o plano, para poder avançar</p>
       </div>
       <Button
         variant="primary"

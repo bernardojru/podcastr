@@ -24,6 +24,8 @@ export const HeaderPremiumContainer = styled("header", {
   a: {
     borderRightWidth: "1px",
     paddingRight: "1rem",
+    textDecoration: "none",
+    color: "#fff",
 
     div: {
       display: "flex",
@@ -100,6 +102,10 @@ export const PopoverContent = styled(Popover.Content, {
     background: "transparent",
     fontWeight: "$bold",
     color: "$white",
+    a: {
+      textDecoration: "none",
+      color: "#fff",
+    },
   },
 
   form: {

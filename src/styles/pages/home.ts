@@ -74,9 +74,11 @@ export const HomeContainer = styled("main", {
     },
 
     h1: {
+      width: "100%",
       fontSize: "3rem",
       fontWeight: 700,
       color: "$text",
+      textAlign: "center",
     },
     p: {
       textAlign: "center",

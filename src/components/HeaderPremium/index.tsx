@@ -7,8 +7,6 @@ import {
   EndContent,
 } from "./styles";
 
-import ptBR from "date-fns/locale/pt-BR";
-
 import { useEffect, useState } from "react";
 import { useThemes } from "../../hooks/useThemes";
 import { ToggleThemesButton } from "../ToggleThemesButton";
@@ -17,20 +15,12 @@ import { Avatar } from "../Avatar";
 import { Button } from "@ignite-ui/react";
 import { useLogin } from "../../contexts/LoginContext";
 import { useAvatar } from "../../hooks/useAvatart";
-import { format } from "date-fns";
 import { Countdown } from "../Countdown";
 import Link from "next/link";
 
-interface User {
-  id: string;
-  name: string;
-  password: string;
-  email: string;
-}
-
 export function HeaderPremium() {
   const { themes } = useThemes();
-  const { handleFile, previewImg, deleteFile } = useAvatar();
+  const { handleFile, deleteFile } = useAvatar();
   const { saveName, setSaveName, deleteStorage } = useLogin();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,12 +29,12 @@ export function HeaderPremium() {
   }
 
   useEffect(() => {
-    setSaveName(localStorage.getItem("username"));
+    if (saveName) {
+      return;
+    } else {
+      setSaveName(localStorage.getItem("username"));
+    }
   }, []);
-
-  const currentDate = format(new Date(), "EEEEEE, d MMMM", {
-    locale: ptBR,
-  });
 
   return (
     <HeaderPremiumContainer className={themes}>
@@ -68,6 +58,14 @@ export function HeaderPremium() {
             <PopoverPortal>
               <PopoverContent>
                 <Button onClick={deleteFile}>Apagar imagem</Button>
+                <Button>
+                  <Link
+                    href="https://api.whatsapp.com/send?phone=244934009132"
+                    target="__blank"
+                  >
+                    Enviar mensagem
+                  </Link>
+                </Button>
                 <Button>
                   <input type="file" onChange={handleFile} />
                 </Button>

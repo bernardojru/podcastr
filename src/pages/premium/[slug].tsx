@@ -39,7 +39,7 @@ interface EpisodeProps {
 
 export default function PremiumEpisode({ episode }: EpisodeProps) {
   const { themes } = useThemes();
-  const { saveName } = useLogin();
+  const { saveEmail } = useLogin();
   const { play } = usePlayer();
 
   return (
@@ -55,7 +55,7 @@ export default function PremiumEpisode({ episode }: EpisodeProps) {
           style={{ color: `${themes === dark ? "#aeaeb0" : "#131313"}` }}
         >
           <ThumbnailContainer>
-            <Link href="/premium">
+            <Link href={`/premium?email=${saveEmail}`}>
               <button type="button">
                 <ArrowUUpLeft size={20} color="white" weight="fill" />
               </button>

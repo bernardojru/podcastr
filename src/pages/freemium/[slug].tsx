@@ -19,7 +19,6 @@ import { useThemes } from "../../hooks/useThemes";
 import { dark } from "../../styles/themes/dark";
 import { Play, ArrowUUpLeft } from "phosphor-react";
 import { useLogin } from "../../contexts/LoginContext";
-import { useRouter } from "next/router";
 
 type Episode = {
   id: string;
